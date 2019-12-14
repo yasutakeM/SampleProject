@@ -1,0 +1,420 @@
+.flickity-enabled {
+  position: relative;
+}
+
+.flickity-enabled:focus { outline: none; }
+
+.flickity-viewport {
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+}
+
+.flickity-slider {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+/* draggable */
+
+.flickity-enabled.is-draggable {
+  -webkit-tap-highlight-color: transparent;
+          tap-highlight-color: transparent;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.flickity-enabled.is-draggable .flickity-viewport {
+  cursor: move;
+  cursor: -webkit-grab;
+  cursor: grab;
+}
+
+.flickity-enabled.is-draggable .flickity-viewport.is-pointer-down {
+  cursor: -webkit-grabbing;
+  cursor: grabbing;
+}
+
+/* ---- flickity-button ---- */
+
+.flickity-button {
+  position: absolute;
+  background: hsla(0, 0%, 100%, 0.75);
+  border: none;
+  color: #333;
+}
+
+.flickity-button:hover {
+  background: white;
+  cursor: pointer;
+}
+
+.flickity-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 5px #19F;
+}
+
+.flickity-button:active {
+  opacity: 0.6;
+}
+
+.flickity-button:disabled {
+  opacity: 0.3;
+  cursor: auto;
+  pointer-events: none;
+}
+
+.flickity-button-icon {
+  fill: currentColor;
+}
+
+/* ---- previous/next buttons ---- */
+
+.flickity-prev-next-button {
+  top: 50%;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  /* vertically center */
+  transform: translateY(-50%);
+}
+
+.flickity-prev-next-button.previous { left: 10px; }
+.flickity-prev-next-button.next { right: 10px; }
+/* right to left */
+.flickity-rtl .flickity-prev-next-button.previous {
+  left: auto;
+  right: 10px;
+}
+.flickity-rtl .flickity-prev-next-button.next {
+  right: auto;
+  left: 10px;
+}
+
+.flickity-prev-next-button .flickity-button-icon {
+  position: absolute;
+  left: 20%;
+  top: 20%;
+  width: 60%;
+  height: 60%;
+}
+
+/* ---- page dots ---- */
+
+.flickity-page-dots {
+  position: absolute;
+  width: 100%;
+  bottom: -25px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-align: center;
+  line-height: 1;
+}
+
+.flickity-rtl .flickity-page-dots { direction: rtl; }
+
+.flickity-page-dots .dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 0 8px;
+  background: #333;
+  border-radius: 50%;
+  opacity: 0.25;
+  cursor: pointer;
+}
+
+.flickity-page-dots .dot.is-selected {
+  opacity: 1;
+}
+
+/* Flickity fullscreen v1.0.1
+------------------------- */
+
+.flickity-enabled.is-fullscreen {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: hsla(0, 0%, 0%, 0.9);
+  padding-bottom: 35px;
+  z-index: 1;
+}
+
+.flickity-enabled.is-fullscreen .flickity-page-dots {
+  bottom: 10px;
+}
+
+.flickity-enabled.is-fullscreen .flickity-page-dots .dot {
+  background: white;
+}
+
+/* prevent page scrolling when flickity is fullscreen */
+html.is-flickity-fullscreen {
+  overflow: hidden;
+}
+
+/* ---- flickity-fullscreen-button ---- */
+
+.flickity-fullscreen-button {
+  display: block;
+  right: 10px;
+  top: 10px;
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+}
+
+/* right-to-left */
+.flickity-rtl .flickity-fullscreen-button {
+  right: auto;
+  left: 10px;
+}
+
+.flickity-fullscreen-button-exit { display: none; }
+
+.flickity-enabled.is-fullscreen .flickity-fullscreen-button-exit { display: block; }
+.flickity-enabled.is-fullscreen .flickity-fullscreen-button-view { display: none; }
+
+.flickity-fullscreen-button .flickity-button-icon {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  left: 4px;
+  top: 4px;
+}
+
+/* flickity-fade */
+
+.flickity-enabled.is-fade .flickity-slider > * {
+  pointer-events: none;
+  z-index: 0;
+}
+
+.flickity-enabled.is-fade .flickity-slider > .is-selected {
+  pointer-events: auto;
+  z-index: 1;
+}
+
+
+/* ---- ここらへん ---- */
+
+.carousel {
+  /* background: #FAFAFA;
+  margin-bottom: 30px; */
+  padding: 10px auto;
+  counter-reset: carousel-cell;
+}
+
+.carousel-cell {
+  /* width: 150px;
+  height: 160px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  background: #8C8;
+  border-radius: 5px;
+  counter-increment: carousel-cell; */
+
+}
+.carousel-cell a{
+    color: #555;
+    padding: 8px;
+    display: block;
+    overflow: hidden;
+    border-radius: 8px;
+    text-decoration: none;
+    background: #fff;
+    min-height: 128px;
+    position: relative;
+    margin: 12px 0;
+}
+.carousel-cell a:before{
+content: "";
+position: absolute;
+width: -webkit-calc(100% - 36px);
+width: calc(100% - 36px);
+height: 8px;
+top: -1px;
+left: 0;
+margin-left: 18px;
+border-radius: 3px;
+}
+.carousel-cell .contentsImage {
+  width: 100%;
+  height: 100px;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.flickity-enabled .carousel-cell { margin-bottom: 0; }
+/* 
+.carousel-cell:before,
+.carousel-cell__number {
+  display: block;
+  width: 100px;
+  margin: 0 auto;
+  content: counter(carousel-cell);
+  text-align: center;
+  line-height: 160px;
+  font-size: 80px;
+  color: white;
+} */
+
+.carousel--not-counting .carousel-cell:before { content: none; }
+
+/* ---- carousel-image-cell ---- */
+/* frames single image in cell */
+
+.carousel-image-cell {
+  width: 66%;
+  height: 200px;
+  margin-right: 10px;
+  background: #222;
+  /* center images */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-image-cell img {
+  display: block;
+  max-height: 100%;
+}
+
+.carousel-image-cell--wide {
+  width: 100%;
+}
+
+.carousel.is-fullscreen .carousel-image-cell {
+  background: transparent;
+}
+
+/* ---- carousel__natural-image ---- */
+/* use natural sizes for cell size */
+
+.carousel__natural-image {
+  display: block;
+  height: 200px;
+  min-width: 150px;
+  max-width: 100%;
+  margin-right: 10px;
+}
+
+/* ---- style ---- */
+
+.carousel--full-width .carousel-cell {
+  width: 100%;
+}
+
+.carousel--half-width .carousel-cell {
+  width: 50%;
+}
+
+.carousel--various-widths .carousel-cell { width: 33%; }
+.carousel--various-widths .carousel-cell.size-180 { width: 180px; }
+.carousel--various-widths .carousel-cell.size-large { width: 75%; }
+
+.carousel--media-queried .carousel-cell {
+  width: 100%;
+}
+
+.carousel--selected-cell .carousel-cell.is-selected { background: #ED2; }
+
+.carousel--carousel-focus:focus .flickity-viewport {
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+}
+
+/* ---- show-several ---- */
+
+.carousel--show-several .carousel-cell { width: 28%; }
+
+/* ---- cell-selector ---- */
+
+.carousel--cell-selector { position: relative; }
+
+/* ---- images-loaded ---- */
+
+.carousel--images-loaded-demo img {
+  display: block;
+  height: 160px;
+}
+
+.carousel--images-demo {
+  margin-bottom: 40px;
+}
+
+.carousel--images-demo img {
+  display: block;
+  height: 160px;
+}
+
+/* ---- carousel--pixel-position-demo ---- */
+
+.carousel--pixel-position-demo .carousel-cell { width: 300px; }
+
+/* ---- carousel--100-width-height ---- */
+
+.carousel--full-bleed { height: 100%; }
+
+.carousel--full-bleed .carousel-cell { height: 100%; }
+
+/* move page dots into carousel*/
+.carousel--full-bleed .flickity-page-dots { bottom: 10px; }
+
+/* ---- carousel--set-carousel-size-disabled ---- */
+
+.carousel--set-carousel-size-disabled { height: 160px; }
+.carousel--set-carousel-size-disabled .carousel-cell { height: 100%; }
+
+.carousel--set-carousel-size-disabled-percentage { padding-bottom: 50%; }
+.carousel--set-carousel-size-disabled-percentage .flickity-viewport {
+  position: absolute;
+  width: 100%;
+}
+.carousel--set-carousel-size-disabled-percentage .carousel-cell { height: 100%; }
+
+/* ---- resize-option ---- */
+
+.carousel--resize-option {
+  width: 300px;
+}
+
+/* ---- adaptive-height ---- */
+
+.carousel-cell--adapt-height2 { height: 240px; }
+.carousel-cell--adapt-height3 { height: 320px; }
+
+.carousel--transition-adaptive-height .flickity-viewport {
+  transition: height 0.2s;
+}
+
+/* ---- bg-lazyload ---- */
+
+.carousel--bg-lazyload .carousel-cell {
+  background-size: cover;
+  background-position: center center;
+  height: 220px;
+}
+
+/* ---- bg-lazyload ---- */
+
+.carousel--fade {
+  background: #222;
+}
+
+/* ---- large device media query ---- */
+
+@media screen and ( min-width: 768px ) {
+
+  .carousel--media-queried .carousel-cell { width: 50%; }
+
+  .carousel--images-demo img {
+    height: 400px;
+  }
+}
