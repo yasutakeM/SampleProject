@@ -43,23 +43,7 @@ Route::get('/regist', function () {
 //管理者
 Route::resource('admin', 'ProductController');
 
-// Route::get('/admin/show', function () {
-//     return view('admin/show');
-// });
 
-// Route::get('/admin/menu', function () {
-//     return view('admin/menu');
-// });
-
-//管理者を登録
-// Route::get('/admin/edit', function () {
-//     return view('admin/edit');
-// });
-
-// //管理者　商品登録
-// Route::get('/admin/product', function () {
-//     return view('admin/product');
-// });
 
 //Route::get('admin','admin.TopController@index');
 Auth::routes();
