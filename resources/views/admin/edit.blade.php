@@ -1,15 +1,15 @@
 @extends('layouts.common')
- 
 @section('title', '管理者メニュー')
 @section('keywords', 'キーワード1,キーワード2,キーワード3')
 @section('description', '説明文')
+
 @include('components.head')
 
 @section('header')
 <header class="commonHeader">
     <div class="commonHeader--wrap">
-    <div class="commonHeader--inner" style="font-weight: bold;color: #876ca9;font-size: 1.8rem;">
-管理者用ページ
+        <div class="commonHeader--inner" style="font-weight: bold;color: #876ca9;font-size: 1.8rem;">
+            管理者用ページ
         </div>
 
         <ul class="commonHeader__menu">
@@ -39,36 +39,50 @@
         </div>
 
         <div class="loginForm__input">
+            <div class="loginForm__input--inner">
+                <form method="post" action="/SampleProject/admin" enctype="multipart/form-data">
+                    {{ csrf_field() }}
+                    <div class="">
+                        <h2 class="title_page">商品情報を更新</h2>
+                        <div class="inputCatData">
 
-                <div class="loginForm__input--inner">
-                <form method="post" action="confirm_regist.php" enctype="multipart/form-data">
+                            <label>商品名</label>
+                            <input type="text" name="productName" value="{{ old('productName', $product->productName) }}">
 
-<div class="">
-    <h2 class="title_page">管理者情報を入力</h2>
-    <div class="inputCatData">
+                            <label>商品画像（メイン）</label>
+                            <input type="text" name="productImage" value="{{ old('productImage', $product->productImage) }}">
 
-          <label>名前</label>
-          <input type="text" name="name" placeholder="例) ネコタロウ">
+                            <label>商品画像（サブ）</label>
+                            <input type="text" name="productSubImage" value="{{ old('productSubImage', $product->productSubImage) }}">
 
-          <label>パスワード</label>
-          <input type="password" name="color" placeholder="例) 茶色">
-      </div>
+                            <label>商品カテゴリ</label>
+                            <select name="category" class="selectNormal">
+                                <option value="{{ old('category', $product->category) }}" selected="">
+                                {{ old('category', $product->category) }}
+                                </option>
+                                <option value="カテゴリ1">カテゴリ1</option>
+                                <option value="カテゴリ2">カテゴリ2</option>
+                                <option value="カテゴリ3">カテゴリ3</option>
+                            </select>
 
-</div>
-<input class="button" type="submit" value="確認する">
+                            <label>商品説明</label>
+                            <textarea style="height: calc( 1.3em * 5 ); line-height: 1.3;"type="text" name="explanation" value="{{ old('explanation', $product->explanation) }}">{{ old('explanation', $product->explanation) }}</textarea>
 
-</form>
-                </div>
+                            <label>商品残数</label>
+                            <input type="number" name="remaining" value="{{ old('remaining', $product->remaining) }}">
+
+                            <label>商品価格</label>
+                            <input type="number" name="amount" value="{{ old('amount', $product->amount) }}">
+
+                        </div>
+
+                    </div>
+                    <input class="button" type="submit" value="登録する">
+
+                </form>
+            </div>
         </div>
     </section>
 </div>
 
-<a href="/SampleProject/admin/{{ $product->id }}" class="btn btn-outline-primary">Show</a>
-<a href="/SampleProject/admin/{{ $product->id }}/edit" class="btn btn-outline-primary">Edit</a>
-
 @endsection
-
-
-
-
-

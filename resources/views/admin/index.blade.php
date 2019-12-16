@@ -32,39 +32,23 @@
 
 
 @section('topArea')
-  <ul class="pagination">
+<ul class="pagination">
     <li class="previous">
-                    <span rel="prev" class="off">&nbsp;</span>
-            </li>
-
-
-                <li>
-
-                            <a class='now_page' href="?page=1">1</a>
-
-              
-          </li>
-                <li>
-
-                            <a  href="?page=2">2</a>
-
-              
-          </li>
-                <li>
-
-                            <a  href="?page=3">3</a>
-
-              
-          </li>
-      
-
-      <li class="next">
-                        <a href="?page=2" rel="next"></a>
-                </li>
-  </ul>
-
-
-
+    <span rel="prev" class="off">&nbsp;</span>
+    </li>
+    <li>
+    <a class='now_page' href="?page=1">1</a>
+    </li>
+    <li>
+    <a  href="?page=2">2</a>
+    </li>
+    <li>
+    <a  href="?page=3">3</a>
+    </li>
+    <li class="next">
+    <a href="?page=2" rel="next"></a>
+    </li>
+</ul>
 
   <div class="contentsArea" style="margin: 0 auto;">
 
@@ -73,7 +57,7 @@
 
 @foreach($products as $product)
                 <li>
-                      <a href="/SampleProject/admin/show?id={{ $product->id }}"class="male toDetail">
+                      <section class="male toDetail">
                           <h3 class="catName">{{ $product->productName }}</h3>
 
                           <div class="contentsArea__contents--pcWidth">
@@ -108,21 +92,14 @@
                           
                           <ul class="operation">
                                 <li>
-                                    <form action="update.php" method="post">
-                                        <input type="hidden" name ="id" value="4">
-                                        <input type="submit" value="変更" class="button--white">
-                                    </form>
+                                <a href="admin/{{ $product->id }}/edit" class="button--white">変更</a>
                                 </li>
                                 <li>                                
-                                    <form action="delete.php" method="post">
-                                        <input type="hidden" name="name" value="ネコスケ二世">
-                                        <input type="hidden" name ="delete" value="4">
-                                        <input type="submit" value="削除" class="button--white">
-                                    </form>
+                                <a href="admin/{{ $product->id }}/edit" class="button--white">削除</a>
                                 </li>
                           </ul>
 
-                      </a>
+</section>
                 </li>
 @endforeach
 
@@ -132,35 +109,21 @@
 
   </div><!-- //.contentsArea -->
 
-
-    <ul class="pagination">
+<ul class="pagination">
     <li class="previous">
-                    <span rel="prev" class="off">&nbsp;</span>
-            </li>
-
-
-                <li>
-
-                            <a class='now_page' href="?page=1">1</a>
-
-              
-          </li>
-                <li>
-
-                            <a  href="?page=2">2</a>
-
-              
-          </li>
-                <li>
-
-                            <a  href="?page=3">3</a>
-
-              
-          </li>
-      
-
-      <li class="next">
-                        <a href="?page=2" rel="next"></a>
-                </li>
-  </ul>
+    <span rel="prev" class="off">&nbsp;</span>
+    </li>
+    <li>
+    <a class='now_page' href="?page=1">1</a>
+    </li>
+    <li>
+    <a  href="?page=2">2</a>
+    </li>
+    <li>
+    <a  href="?page=3">3</a>
+    </li>
+    <li class="next">
+    <a href="?page=2" rel="next"></a>
+    </li>
+</ul>
 @endsection

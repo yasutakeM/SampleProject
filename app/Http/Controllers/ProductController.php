@@ -93,10 +93,17 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+
+    public function edit($id)
     {
-        return view('admin.edit', compact('poroduct'));
+        return view('admin.edit', [
+            'product' => Product::findOrFail($id)
+          ]);
     }
+    // public function edit(Product $product)
+    // {
+    //     return view('admin.edit', compact('poroduct'));
+    // }
 
     /**
      * Update the specified resource in storage.
