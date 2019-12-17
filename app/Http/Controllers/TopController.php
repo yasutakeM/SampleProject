@@ -11,14 +11,15 @@ class TopController extends Controller
 {
     public function index()
     {
+        $data=[
+          'products' => Product::all()
+        ];
+        return view('top', $data);
 
-        //出力を戻り値に
-        // return view('top');
-        $product = Product::all();   // 全データ取得
-        return view('top', [
-            "products" => $product
-        ]);
-    
+        // $product = Product::all();   // 全データ取得
+        // return view('top', [
+        //     "products" => $product
+        // ]);
     }
 
     public function view()

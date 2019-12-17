@@ -80,7 +80,7 @@
     <a href="detail" class="zoomAnimation male toDetail">
         <h3 class="catName">{{ $product->productName }}</h3>
         <div class="contentsArea__contents--pcWidth">
-            <div class="contentsImage" style="background:url({{ asset('/images/catlist/cat11.jpg') }});background-position: center center;background-size: cover;">&nbsp;</div>
+            <div class="contentsImage">&nbsp;</div>
             <div class="contents__details">
                 <ul>
 

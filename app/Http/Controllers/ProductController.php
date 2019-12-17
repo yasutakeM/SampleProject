@@ -69,7 +69,11 @@ class ProductController extends Controller
         $product->amount =$request->input('amount');//価格
         $product->save();
 
-        return redirect()->route('admin.show', ['id' => $product->id])->with('message', 'Product was successfully created.');
+
+        return view('admin.detail')->with('product', $product);
+
+
+        // return redirect()->route('admin.show', ['id' => $product->id])->with('message', 'Product was successfully created.');
 
     }
 
@@ -80,12 +84,17 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
+
+
+
     public function show(Product $product)
     {
         //
-        return view('admin.show');
+        // return view('admin.show')->with('product', $product);
+        return view('admin.detail')->with('product', $product);
     }
 
+    
     
     /**
      * Show the form for editing the specified resource.

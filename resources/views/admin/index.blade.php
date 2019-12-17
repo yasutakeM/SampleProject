@@ -1,6 +1,5 @@
 @extends('layouts.common')
  
-
 @section('title', '管理者メニュー')
 @section('keywords', 'キーワード1,キーワード2,キーワード3')
 @section('description', '説明文')
@@ -52,6 +51,7 @@
 
   <div class="contentsArea" style="margin: 0 auto;">
 
+<a href="admin/create">商品登録</a>
   <h3 class="page_title"><i class="icon--cat tinRightOut"></i>警備員一覧<span>1ページ目</span></h3>
         <ul class="contentsArea__contents">
 
