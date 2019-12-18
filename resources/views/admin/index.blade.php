@@ -31,6 +31,9 @@
 
 
 @section('topArea')
+
+
+
 <ul class="pagination">
     <li class="previous">
     <span rel="prev" class="off">&nbsp;</span>
@@ -92,11 +95,16 @@
                           
                           <ul class="operation">
                                 <li>
-                                <a href="admin/{{ $product->id }}/edit" class="button--white">変更</a>
+                                <a href="{{ $product->id }}/edit" class="button--white">変更</a>
+                                <?php
+                                // <a href="admin/{{ $product->id }}/edit" class="button--white">変更</a>
+                                ?>
                                 </li>
-                                <li>           
 
-                                <a href="admin/delete/{{ $product->id }}" class="button--white">削除</a>
+                                <li>  
+                                <a href="delete/{{ $product->id }}" class="button--white">削除</a>
+
+                                <?php //<a href="admin/delete/{{ $product->id }}" class="button--white">削除</a> ?>
                                 </li>
                           </ul>
 

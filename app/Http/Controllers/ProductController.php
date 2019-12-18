@@ -39,15 +39,7 @@ class ProductController extends Controller
         return view('admin.create');
     }
 
-    public function detail(Product $product)
-    {
-        return view('admin/detail', [
-            'productName' => $product->productName,
-            'category' => $product->category,
-            'amount' => $product->amount,
-            'image_url' => str_replace('public/', 'storage/', $product->image_url), //今回追加
-        ]);        
-    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -121,9 +113,18 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+
+    public function update(Request $request, $id)
     {
-        //
+        $product = Product::find($request->id);
+        $form = $request->all();
+        unset($form['_token']);//余計なトークンを削除
+        $product->fill($form)->save();
+        return view('admin.detail')->with('product', $product);
+        // return redirect('admin/detail');
+        // $product = Product::find($request->id);
+        // $product->fill($request->all())->save();
+        // return redirect('admin/');
     }
 
     /**
