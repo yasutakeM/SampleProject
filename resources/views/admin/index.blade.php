@@ -69,14 +69,15 @@
 
                           <div class="contentsArea__contents--pcWidth">
                               <div class="contentsImage" style="background:url(../assets/images/catlist/cat-2964869_1920.jpg);background-position: center center;background-size: cover;">&nbsp;{{ $product->productImage }}</div>
+
                               <div class="contents__details">
                                   <ul>
                                         <li>
                                             <div>登録</div>
-                                            <div>{{ $product->update_at }}</div>
+                                            <div>{{ $product->created_at }}</div>
                                         </li>
                                       <li>
-                                          <div>category</div>
+                                          <div>カテゴリ</div>
                                           <div>{{ $product->category }}</div>
                                     </li>
 

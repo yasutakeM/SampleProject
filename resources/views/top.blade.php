@@ -24,9 +24,9 @@
             </a>
 
             <div class="topArea__catch">
-                <span>優秀な警備員を</span><br>
-                <span>家族の一員に</span><br>
-                <span>迎えよう</span>
+                <span>優秀な警備員の</span><br>
+                <span>ご機嫌を</span><br>
+                <span>伺おう</span>
             </div>
 
             <nav class="topArea__memberResist">
@@ -42,12 +42,11 @@
                                         @csrf
                                     </form>
                             <a href="{{ url('/home') }}">Home</a>
-                        @else
-                            <a href="{{ route('login') }}">ログイン</a>
-
+                        @else                            
                             @if (Route::has('register'))
                                 <a href="{{ route('register') }}">会員登録</a>
                             @endif
+                            <a href="{{ route('login') }}">ログイン</a>
                         @endauth
                 @endif
             </nav>
@@ -59,211 +58,61 @@
 @section('catch')
 <div class="caption"  name="viewArea" id="viewArea">
     <h2>
-    自宅の不甲斐ないセキュリティーに日ごと怯えて過ごす不憫な
-    @guest
-        あなた
-    @else
-        <span style="color: red;">{{ Auth::user()->name }} </span>
-    @endguest      
-と"保護猫警備員"を結ぶ、<span>架空のサイトでございます</span>
+    警備員がご機嫌になるアイテム盛り沢山の<span>架空ECサイトでございます</span>
     </h2>
-    <p>会員登録&警備員の要請を行いますと、近日中に警備員があなたの自宅を訪問します。ご自宅に招き入れていただくことで住み込み警備を開始します。<br><span style="color: #ef6464;">＊実際に警備員が派遣されることはありませんのでご注意ください。</spa></p>
+    <p>警備員のご機嫌を取ることが家内安全への近道となります。<br><span style="color: #ef6464;">＊実際に商品を購入することは出来ませんのでご注意ください。</spa></p>
 </div>
 @endsection
 
 @section('content')
 
-<ul class="contentsArea__contents cats">
-
-@foreach($products as $product)
-<li>
-    <a href="detail" class="zoomAnimation male toDetail">
-        <h3 class="catName">{{ $product->productName }}</h3>
-        <div class="contentsArea__contents--pcWidth">
-            <div class="contentsImage">&nbsp;</div>
-            <div class="contents__details">
-                <ul>
-
-                    <li>
-                        <div>category</div>
-                        <div>{{ $product->category }}</div>
-                    </li>
-
-                    <li>
-                        <div>残数</div>
-                        <div>{{$product->remaining}}</div>
-                    </li>
-                    <li>
-                        <div>価格</div>
-                        <div>{{$product->amount}}円</div>
-                    </li>
-                </ul>
-            </div><!--  //.contents__details -->
-        </div> <!-- //.pcwidth --> 
-        <div class="box">{{$product->explanation}}</div>
-    </a>
-</li>
-@endforeach
-
-            
-</ul>
+        @guest
+            未ログイン
+        @else
+            <span style="color: red;">{{ Auth::user()->name }} </span>としてログイン中
+        @endguest 
+<br>
+カテゴリで絞る
+<select>
+    <option>選択する</option>
+    <option>グルメ</option>
+    <option>休暇</option>
+    <option>健康</option>
+</select>
+<br><br><br>
 
 
 
-<div class="carousel" data-flickity='{ "freeScroll": true, "pageDots": false, "prevNextButtons": false }'>
-<div class="carousel-cell">
-<a href="detail" class="zoomAnimation male">
-        <h3 class="catName">テスト</h3>
-        <div class="contentsArea__contents--pcWidth">
-            <div class="contentsImage" style="background:url({{ asset('/images/catlist/cat11.jpg') }});background-position: center center;background-size: cover;">&nbsp;</div>
-            <div class="contents__details">
-                <ul>
-                    <li>
-                        <div>掲載</div>
-                        <div>2019-10-04</div>
-                    </li>
 
-                    <li>
-                        <div>性別</div>
-                        <div>オス</div>
-                    </li>
-                    <li>
-                        <div>特技</div>
-                        <div>情報収集</div>
-                    </li>
-                </ul>
-            </div><!--  //.contents__details -->
-        </div> <!-- //.pcwidth --> 
-    </a>
-</div>
 
-<div class="carousel-cell">
-<a href="detail" class="zoomAnimation male">
-        <h3 class="catName">テスト</h3>
-        <div class="contentsArea__contents--pcWidth">
-            <div class="contentsImage" style="background:url({{ asset('/images/catlist/cat11.jpg') }});background-position: center center;background-size: cover;">&nbsp;</div>
-            <div class="contents__details">
-                <ul>
-                    <li>
-                        <div>掲載</div>
-                        <div>2019-10-04</div>
-                    </li>
 
-                    <li>
-                        <div>性別</div>
-                        <div>オス</div>
-                    </li>
-                    <li>
-                        <div>特技</div>
-                        <div>情報収集</div>
-                    </li>
-                </ul>
-            </div><!--  //.contents__details -->
-        </div> <!-- //.pcwidth --> 
-    </a>
-</div>
-
-<div class="carousel-cell">
-<a href="detail" class="zoomAnimation male">
-        <h3 class="catName">テスト</h3>
-        <div class="contentsArea__contents--pcWidth">
-            <div class="contentsImage" style="background:url({{ asset('/images/catlist/cat11.jpg') }});background-position: center center;background-size: cover;">&nbsp;</div>
-            <div class="contents__details">
-                <ul>
-                    <li>
-                        <div>掲載</div>
-                        <div>2019-10-04</div>
-                    </li>
-
-                    <li>
-                        <div>性別</div>
-                        <div>オス</div>
-                    </li>
-                    <li>
-                        <div>特技</div>
-                        <div>情報収集</div>
-                    </li>
-                </ul>
-            </div><!--  //.contents__details -->
-        </div> <!-- //.pcwidth --> 
-    </a>
-</div>
-
-<div class="carousel-cell">
-<a href="detail" class="zoomAnimation male">
-        <h3 class="catName">テスト</h3>
-        <div class="contentsArea__contents--pcWidth">
-            <div class="contentsImage" style="background:url({{ asset('/images/catlist/cat11.jpg') }});background-position: center center;background-size: cover;">&nbsp;</div>
-            <div class="contents__details">
-                <ul>
-                    <li>
-                        <div>掲載</div>
-                        <div>2019-10-04</div>
-                    </li>
-
-                    <li>
-                        <div>性別</div>
-                        <div>オス</div>
-                    </li>
-                    <li>
-                        <div>特技</div>
-                        <div>情報収集</div>
-                    </li>
-                </ul>
-            </div><!--  //.contents__details -->
-        </div> <!-- //.pcwidth --> 
-    </a>
-</div>
-</div>
 
 <ul class="article-cards-col-3">
-    <li class="article">
+@foreach($products as $product)
+
+<li class="article">
     <a class="article-link js-gtm-click-sender" href="#">
     <div class="topProductImage">
-    <img class="article-eyecatch" src="{{ asset('/images/catlist/cat06.jpg') }}">
+    <img class="article-eyecatch" src="{{ asset('/images/products/p001.png') }}">
     </div>
     <div class="article-information">
-        <div class="article-top-category-name">あああああうううう猫</div>
+        <div class="article-top-category-name">{{ $product->productName }}</div>
         <div class="article-title">
-            商品説明文商品説明文商品説明文商品説明文商品説明文商品説明文商品説明文商品説明文商品説明文
+        {{ $product->explanation }}
         </div>
-        <div class="article-ancestor-category-names">この商品のカテゴリ</div>
+        <div class="article-ancestor-category-names">{{$product->amount}}円</div>
+
+        <div class="article-ancestor-category-names">{{ $product->category }}</div>
     </div>
     </a>
     </li>
-
-    <li class="article">
-    <a class="article-link js-gtm-click-sender" href="#">
-    <div class="topProductImage">
-    <img class="article-eyecatch" src="{{ asset('/images/catlist/cat05.jpg') }}">
-    </div>
-    <div class="article-information">
-        <div class="article-top-category-name">あああああおおおお猫</div>
-        <div class="article-title">
-            商品説明文商品説明文商品説明文商品説明文商品説明文商品説明文商品説明文商品説明文商品説明文
-        </div>
-        <div class="article-ancestor-category-names">1234円</div>
-
-        <div class="article-ancestor-category-names">この商品のカテゴリ</div>
-    </div>
-    </a>
-    </li>
-
-    <li class="article">
-    <a class="article-link js-gtm-click-sender" href="#">
-    <div class="topProductImage">
-    <img class="article-eyecatch" src="{{ asset('/images/catlist/cat07.jpg') }}">
-    </div>
-    <div class="article-information">
-        <div class="article-top-category-name">あああああええええ猫</div>
-        <div class="article-title">
-            商品説明文商品説明文商品説明文商品説明文商品説明文商品説明文商品説明文商品説明文商品説明文
-        </div>
-        <div class="article-ancestor-category-names">この商品のカテゴリ</div>
-    </div>
-    </a>
-    </li>
+    
+@endforeach            
 </ul>
+
+
+
+
 
 
 
