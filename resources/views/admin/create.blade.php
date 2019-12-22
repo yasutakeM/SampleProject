@@ -40,7 +40,7 @@
 
         <div class="loginForm__input">
             <div class="loginForm__input--inner">
-                <form method="post" action="/SampleProject/admin" enctype="multipart/form-data">
+                <form method="post" action="{{ url('/admin') }}" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="">
                         <h2 class="title_page">商品情報を入力</h2>
@@ -50,17 +50,17 @@
                             <input type="text" name="productName">
 
                             <label>商品画像（メイン）</label>
-                            <input type="text" name="productImage">
+                            <input type="file" name="productImage">
 
                             <label>商品画像（サブ）</label>
-                            <input type="text" name="productSubImage">
+                            <input type="file" name="productSubImage">
 
                             <label>商品カテゴリ</label>
                             <select name="category" class="selectNormal">
                                 <option value="" selected="">選択してください</option>
-                                <option value="カテゴリ1">カテゴリ1</option>
-                                <option value="カテゴリ2">カテゴリ2</option>
-                                <option value="カテゴリ3">カテゴリ3</option>
+                                <option value="食品">食品</option>
+                                <option value="おもちゃ"">おもちゃ</option>
+                                <option value="生活">生活</option>
                             </select>
 
                             <label>商品説明</label>

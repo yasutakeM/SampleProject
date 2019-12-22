@@ -40,7 +40,7 @@
 
         <div class="loginForm__input">
             <div class="loginForm__input--inner">
-                <form method="post" action="/SampleProject/admin/update/{{ $product->id }}" enctype="multipart/form-data">
+                <form method="post" action="{{ url('/admin') }}/update/{{ $product->id }}" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="">
                         <h2 class="title_page">商品情報を更新</h2>
@@ -49,11 +49,11 @@
                             <label>商品名</label>
                             <input type="text" name="productName" value="{{ old('productName', $product->productName) }}">
 
-                            <label>商品画像（メイン）</label>
-                            <input type="text" name="productImage" value="{{ old('productImage', $product->productImage) }}">
+                            <label>メイン画像(変更する場合のみ選択してください)</label>
+                            <input type="file" name="productImage" value="{{ old('productImage', $product->productImage) }}">
 
-                            <label>商品画像（サブ）</label>
-                            <input type="text" name="productSubImage" value="{{ old('productSubImage', $product->productSubImage) }}">
+                            <label>サブ画像(変更する場合のみ選択してください)</label>
+                            <input type="file" name="productSubImage" value="{{ old('productSubImage', $product->productSubImage) }}">
 
                             <label>商品カテゴリ</label>
                             <select name="category" class="selectNormal">

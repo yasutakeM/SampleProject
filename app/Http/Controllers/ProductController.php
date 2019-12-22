@@ -53,8 +53,9 @@ class ProductController extends Controller
         //
         $product = new Product();
         $product->productName = $request->input('productName');
-        $product->productImage =$request->input('productImage');
-        $product->productSubImage =$request->input('productSubImage');
+        $product->productImage =$request->file('productImage')->getClientOriginalName();
+        \Debugbar::info($request->file('productImage')->getClientOriginalName());
+        $product->productSubImage =$request->file('productSubImage')->getClientOriginalName();
         $product->category =$request->input('category');
         $product->explanation =$request->input('explanation');//説明
         $product->remaining =$request->input('remaining');//残り

@@ -59,6 +59,36 @@
 商品登録
 </a>
 
+
+<div class="modal" tabindex="-1" role="dialog" id="modal_delete">
+    <form role="form" class="form-inline" method="POST" action="">
+      {{ csrf_field() }}
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <p></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button>
+            <button type="submit" class="btn btn-danger">削除</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    $('#modal_delete').on('shown.bs.modal', function (event) {
+      var button = $(event.relatedTarget);
+      var title = button.data('title');
+      var url = button.data('url');
+      var modal = $(this);
+      modal.find('.modal-body p').eq(0).text(title);
+      modal.find('form').attr('action',url);
+    });
+  </script>
+  
+
   <h3 class="page_title"><i class="icon--cat tinRightOut"></i>警備員一覧<span>1ページ目</span></h3>
         <ul class="contentsArea__contents">
 
@@ -111,9 +141,11 @@
                                 </li>
 
                                 <li>  
+                                <button class="button--white" type="button" data-toggle="modal" data-target="#modal_delete" data-title="{{ $product->id }}" data-url="{{ url('/admin') }}/delete/{{$product->id}}">削除</button>
                                 
-                                <a href="{{ url('/admin') }}/delete/{{$product->id}}" class="button--white">削除</a>
-
+<?php
+//                                <a href="{{ url('/admin') }}/delete/{{$product->id}}" class="button--white">削除</a>
+?>
                                 <?php //<a href="admin/delete/{{ $product->id }}" class="button--white">削除</a> ?>
                                 </li>
                           </ul>

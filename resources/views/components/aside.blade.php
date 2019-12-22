@@ -25,6 +25,14 @@
   @endif
   </div>
 
+  <ul class="categories">
+    @foreach($products as $product->category)
+        <li class="category">
+            <a class="category-link" href="#">カテゴリ01</a>
+        </li>
+    @endforeach
+    </ul>
+    
  <h3>優秀な警備員をお探しの方はこちら</h3> 
      <a href="http://localhost:8888/guardiancat/" class="banner">
       <img src="{{ asset('/images/banner/04.gif') }}" alt="警備員をお探しの方はこちらから">

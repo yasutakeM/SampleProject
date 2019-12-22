@@ -19,7 +19,7 @@
 <section class="topAreaWrap">
     <div class="topArea">
         <div class="topArea--inner">
-            <a class="topArea--logo" href="index.php">
+            <a class="topArea--logo" href="{{ url('/') }}">
                 <h1><img src="{{ asset('/images/logo_white.svg') }}" alt="保護猫があなたの自宅を厳重警備"></h1>
             </a>
 
@@ -71,133 +71,40 @@
         @else
             <span style="color: red;">{{ Auth::user()->name }} </span>としてログイン中
         @endguest 
-<br>
-カテゴリで絞る
-<select>
-    <option>選択する</option>
-    <option>グルメ</option>
-    <option>休暇</option>
-    <option>健康</option>
-</select>
-<br><br><br>
+        <br>
+        カテゴリで絞る
+        <select>
+            <option>選択する</option>
+            <option>グルメ</option>
+            <option>休暇</option>
+            <option>健康</option>
+        </select>
+        <br><br><br>
+
+    <ul class="article-cards-col-3">
+    @foreach($products as $product)
+            <li class="article">
+                <a class="article-link js-gtm-click-sender" href="{{ url('/') }}/{{ $product->id }}/detail">
+                <div class="topProductImage">
+                <img class="article-eyecatch" src="{{ asset('/images/products/item01.jpg') }}">
+                </div>
+                <div class="article-information">
+                    <div class="article-top-category-name">{{ $product->productName }}</div>
+                    <div class="article-title">
+                    {{ $product->explanation }}
+                    </div>
+                    <div class="article-ancestor-category-names">{{$product->amount}}円</div>
+
+                    <div class="article-ancestor-category-names">{{ $product->category }}</div>
+                </div>
+                </a>
+            </li>        
+    @endforeach            
+    </ul>
 
 
 
 
-
-
-
-<ul class="article-cards-col-3">
-@foreach($products as $product)
-
-<li class="article">
-    <a class="article-link js-gtm-click-sender" href="#">
-    <div class="topProductImage">
-    <img class="article-eyecatch" src="{{ asset('/images/products/p001.png') }}">
-    </div>
-    <div class="article-information">
-        <div class="article-top-category-name">{{ $product->productName }}</div>
-        <div class="article-title">
-        {{ $product->explanation }}
-        </div>
-        <div class="article-ancestor-category-names">{{$product->amount}}円</div>
-
-        <div class="article-ancestor-category-names">{{ $product->category }}</div>
-    </div>
-    </a>
-    </li>
-    
-@endforeach            
-</ul>
-
-
-
-
-
-
-
-<section class="products">
-<div class="item">
-<div class="center">
-<div class="thumb">
-<a href="#"><img src="{{ asset('/images/catlist/cat05.jpg') }}" alt="" class="thumbnail"></a>
-</div>
-<h2 class="group">
-<a href="#">
-SR猫じゃらし
-</a>
-</h2>
-
-
-<p class="priceWrap">
-    <span class="price">
-    <span class="num">¥7,000</span>
-    <span class="tax">＋税</span>
-    </span>
-    <span class="stock">＜残り＞×15</span>
-
-</p>
-<div class="article-ancestor-category-names">おもちゃ</div>
-</div>
-</div>
-
-
-<div class="item">
-<div class="center">
-<div class="thumb">
-<a href="#"><img src="{{ asset('/images/catlist/cat05.jpg') }}" alt="" class="thumbnail"></a>
-</div>
-<h2 class="group">
-<a href="#">
-SR猫じゃらし
-</a>
-</h2>
-
-
-<p class="priceWrap">
-    <span class="price">
-    <span class="num">¥7,000</span>
-    <span class="tax">＋税</span>
-    </span>
-    <span class="stock">＜残り＞×15</span><br>
-    <span class="flavor">＜クリア＞×15包<br>＜エナジー＞×15包</span>
-</p>
-</div>
-</div>
-
-</section>
-
-
-
-
-
-
-<ul class="categories">
-    <li class="category">
-        <a class="category-link" href="#">カテゴリ01</a>
-    </li>
-    <li class="category">
-        <a class="category-link" href="#">カテゴリ02</a>
-    </li>
-    <li class="category">
-        <a class="category-link" href="#">カテゴリ03</a>
-    </li>
-    <li class="category">
-        <a class="category-link" href="#">カテゴリ04</a>
-    </li>
-    <li class="category">
-        <a class="category-link" href="#">カテゴリ05</a>
-    </li>
-    <li class="category">
-        <a class="category-link" href="#">カテゴリ0006</a>
-    </li>
-    <li class="category">
-        <a class="category-link" href="#">カテゴリ00000007</a>
-    </li>
-    <li class="category">
-        <a class="category-link" href="#">カテゴリ00000000008</a>
-    </li>
-</ul>
 @endsection
 
 
