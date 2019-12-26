@@ -20,7 +20,9 @@
     <div class="topArea">
         <div class="topArea--inner">
             <a class="topArea--logo" href="{{ url('/') }}">
-                <h1><img src="{{ asset('/images/logo_white.svg') }}" alt="保護猫があなたの自宅を厳重警備"></h1>
+
+
+                <h1><img src="{{ asset('storage/logo_white.svg') }}" alt="保護猫があなたの自宅を厳重警備"></h1>
             </a>
 
             <div class="topArea__catch">
@@ -81,30 +83,70 @@
         </select>
         <br><br><br>
 
-    <ul class="article-cards-col-3">
-    @foreach($products as $product)
-            <li class="article">
-                <a class="article-link js-gtm-click-sender" href="{{ url('/') }}/{{ $product->id }}/detail">
-                <div class="topProductImage">
-                <img class="article-eyecatch" src="{{ asset('/images/products/item01.jpg') }}">
-                </div>
-                <div class="article-information">
-                    <div class="article-top-category-name">{{ $product->productName }}</div>
-                    <div class="article-title">
-                    {{ $product->explanation }}
-                    </div>
-                    <div class="article-ancestor-category-names">{{$product->amount}}円</div>
+<section class="itemWrap">
 
-                    <div class="article-ancestor-category-names">{{ $product->category }}</div>
-                </div>
-                </a>
+
+
+
+    <ul class="items">
+    @foreach($products as $product)
+            <li class="">
+                
+                <article class="itemFrame">
+                    <h3 class="itemInfo__name">{{ $product->productName }}</h3>
+                        <div class="itemImage">
+                        <img class="" src="{{ asset('storage/products/') }}/{{ $product->productImage }}">
+                        </div>
+
+                    <div class="itemInfo">
+                        <div class="itemInfo__inner">
+                            
+                            <span>残数：{{$product->remaining}}</span>
+                            <div class="icon price">
+                                {{$product->amount}}<span>ゴールド</span>
+                            </div>
+
+                            <ul class="operation button--product">
+                                <li>
+                                    <a class="orange" href="{{ url('/') }}/{{ $product->id }}/detail">購入</a>
+                                </li>
+                                <li>
+                                    <a class="blue" href="{{ url('/') }}/{{ $product->id }}/detail">詳細</a>
+                                </li>
+                            </ul>
+
+                                @if($product->category =="おもちゃ")
+                                    <div class="icon toy">
+                                        <a href="#">
+                                            {{ $product->category }}
+
+                                @elseif($product->category =="食品")
+                                    <div class="icon food">
+                                        <a href="#">
+                                            {{ $product->category }}
+
+                                @elseif($product->category =="ファッション")
+                                    <div class="icon fashion">
+                                        <a href="#">
+                                            {{ $product->category }}
+
+                                @else
+                                    <div class="icon uncategorize">
+                                        <a href="#">
+                                            未分類
+
+                                @endif
+                                        </a>
+                                    </div>
+
+                        </div><!--inner-->
+                    </div>
+                </article>
+
             </li>        
     @endforeach            
     </ul>
-
-
-
-
+</section>
 @endsection
 
 

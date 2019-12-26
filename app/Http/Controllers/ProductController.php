@@ -15,13 +15,11 @@ class ProductController extends Controller
 
     public function index()
     {
-
-        //$product = \App\Product::all(); //Postのデータ全て$postsに代入(データ全件取得)
+        //$product = Product::all(); //Postのデータ全て$postsに代入(データ全件取得)
         $product = Product::all();   // 全データ取得
         return view('admin.index', [
             "products" => $product
         ]);
-
         //return view('admin.index'); //view('ディレクトリ名.ファイル名');
     }
 
@@ -54,7 +52,9 @@ class ProductController extends Controller
         $product = new Product();
         $product->productName = $request->input('productName');
         $product->productImage =$request->file('productImage')->getClientOriginalName();
-        \Debugbar::info($request->file('productImage')->getClientOriginalName());
+
+        // \Debugbar::info($request->file('productImage')->getClientOriginalName());
+
         $product->productSubImage =$request->file('productSubImage')->getClientOriginalName();
         $product->category =$request->input('category');
         $product->explanation =$request->input('explanation');//説明
@@ -62,12 +62,11 @@ class ProductController extends Controller
         $product->amount =$request->input('amount');//価格
         $product->save();
 
+        // ここで画像を移動
+        $request->file('productImage')->storeAs('public/products', $request->file('productImage')->getClientOriginalName());
+        $request->file('productSubImage')->storeAs('public/products', $request->file('productSubImage')->getClientOriginalName());        
 
         return view('admin.detail')->with('product', $product);
-
-
-        // return redirect()->route('admin.show', ['id' => $product->id])->with('message', 'Product was successfully created.');
-
     }
 
  
@@ -101,7 +100,11 @@ class ProductController extends Controller
         return view('admin.edit', [
             'product' => Product::findOrFail($id)
           ]);
+
+          \Debugbar::info(Product::findOrFail($id));
+          
     }
+
     // public function edit(Product $product)
     // {
     //     return view('admin.edit', compact('poroduct'));
@@ -115,18 +118,31 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $product = Product::find($request->id);
-        $form = $request->all();
-        unset($form['_token']);//余計なトークンを削除
-        $product->fill($form)->save();
-        return view('admin.detail')->with('product', $product);
-        // return redirect('admin/detail');
+            // idを元にレコードを検索して$articleに代入
+       $product = Product::find($request->id);
+        // editで編集されたデータを$productにそれぞれ代入する
+        $product->productName = $request->productName;
+
+        // $product->productImage = $request->file('productImage')->getClientOriginalName();
+        // $product->productSubImage = $request->file('productSubImage')->getClientOriginalName();
+
+        $product->category = $request->category;
+        $product->explanation = $request->explanation;
+        $product->amount = $request->amount;
+
+
+        // 保存
+        // $product->save();
         // $product = Product::find($request->id);
-        // $product->fill($request->all())->save();
-        // return redirect('admin/');
+        $product->fill($request->all())->save();
+        // \Debugbar::info($request->all());
+        return view('admin.detail')->with('product', $product);
     }
+
+
+
 
     /**
      * Remove the specified resource from storage.
@@ -138,10 +154,10 @@ class ProductController extends Controller
     // {
     //     //
     // }
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        $product = Product::findOrFail($id);
-        $product->delete();
+        $product = Product::findOrFail($request->id)->delete();
+        // $product->delete();
         return redirect('admin/');
     }
 

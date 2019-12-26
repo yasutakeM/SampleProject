@@ -32,15 +32,52 @@
 @section('topArea')
 detailブレードです<br><br><br>
 
+<style>
+    td{
+        padding: 4px;
+    }
+    
 
+tr> td:first-child{
+    text-align: right;
+    background:#333;
+    color: #fff;
+}
+</style>
+
+<div style="width: 60%; margin: 0 auto;">
 <div style="background: #ccc;color: #333;padding: 5px;text-align: center;">登録内容</div>
-        <small>商品名:{{$product->productName}}</small><br>
-        <small>カテゴリ:{{$product->category}}</small><br>
-        <small>メイン画像:{{$product->productImage}}</small><br>
-        <small>サブ画像:{{$product->productSubImage}}</small><br>
-        <small>商品説明:{{$product->explanation}}</small><br>
-        <small>商品価格:{{$product->amount}}円</small><br>
-        <small>残り:{{$product->remaining}}</small>
+<table style="width: 100%;">
+    <tr>
+        <td>商品名</td>
+        <td>{{$product->productName}}</td>
+    </tr> 
+    <tr>
+        <td>カテゴリ</td>
+        <td>{{$product->category}}</td>
+    </tr>
+    <tr>
+        <td>メイン画像</td>
+        <td>{{$product->productImage}}</td>
+    </tr>
+    <tr>
+        <td>サブ画像</td>
+        <td>{{$product->productSubImage}}</td>
+    </tr>
+    <tr>
+        <td>商品説明</td>
+        <td>{{$product->explanation}}</td>
+    </tr>
+    <tr>
+        <td>残り</td>
+        <td>{{$product->remaining}}</td>
+    </tr>
+    <tr>
+        <td>商品価格</td>
+        <td>{{$product->amount}}</td>
+    </tr>
+</table>
+</div>
 <br><br>
 
 <a href="{{ url('/admin') }}/{{$product->id}}/edit">登録内容の変更</a>

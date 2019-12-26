@@ -60,9 +60,9 @@
                                 <option value="{{ old('category', $product->category) }}" selected="">
                                 {{ old('category', $product->category) }}
                                 </option>
-                                <option value="カテゴリ1">カテゴリ1</option>
-                                <option value="カテゴリ2">カテゴリ2</option>
-                                <option value="カテゴリ3">カテゴリ3</option>
+                                <option value="食品">食品</opti食品on>
+                                <option value="おもちゃ">おもちゃ</option>
+                                <option value="ファッション">ファッション</option>
                             </select>
 
                             <label>商品説明</label>
