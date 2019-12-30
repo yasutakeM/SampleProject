@@ -50,6 +50,12 @@ html {
   .commonHeader--inner a img{
     width: 160px;
   }
+  .admin{
+    background: #ef9494;
+    color: #862626;
+    padding: 3px;
+    text-align: center;
+  }
   @media screen and (max-width: 750px){
       .commonHeader--inner {
           width: 100%;

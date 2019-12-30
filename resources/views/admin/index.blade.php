@@ -8,7 +8,7 @@
 @section('header')
 <header class="commonHeader">
     <div class="commonHeader--wrap">
-        <div class="commonHeader--inner" style="font-weight: bold;color: #876ca9;font-size: 1.8rem;">
+        <div class="commonHeader--inner admin">
             管理者用ページ
         </div>
 
@@ -68,7 +68,9 @@
                           <h3 class="catName">{{ $product->productName }}</h3>
 
                           <div class="contentsArea__contents--pcWidth">
-                              <div class="contentsImage" style="background:url(../assets/images/catlist/cat-2964869_1920.jpg);background-position: center center;background-size: cover;">&nbsp;{{ $product->productImage }}</div>
+                                <div class="contentsImage">
+                                  <img class="" src="{{ asset('storage/products/') }}/{{ $product->productImage }}">
+                                </div>
 
                               <div class="contents__details">
                                   <ul>
@@ -117,7 +119,6 @@
                                 <?php //<a href="admin/delete/{{ $product->id }}" class="button--white">削除</a> ?>
                                 </li>
                           </ul>
-
 </section>
                 </li>
 

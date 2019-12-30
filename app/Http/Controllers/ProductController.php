@@ -78,16 +78,19 @@ class ProductController extends Controller
      */
 
 
+    // public function show(Product $product)
+    // {
+    //     $product = Product::find($request->id);
+    //     return view('admin.detail')->with('product', $product);
+    // }
 
-    public function show(Product $product)
+    public function show(Request $request)
     {
-        //
-        // return view('admin.show')->with('product', $product);
-        return view('admin.detail')->with('product', $product);
+        $product = Product::findOrFail($request->id);
+        // $product->delete();
+        return view('show')->with('product', $product);
     }
 
-    
-    
     /**
      * Show the form for editing the specified resource.
      *
@@ -101,8 +104,7 @@ class ProductController extends Controller
             'product' => Product::findOrFail($id)
           ]);
 
-          \Debugbar::info(Product::findOrFail($id));
-          
+          \Debugbar::info(Product::findOrFail($id));          
     }
 
     // public function edit(Product $product)
@@ -120,8 +122,8 @@ class ProductController extends Controller
 
     public function update(Request $request)
     {
-            // idを元にレコードを検索して$articleに代入
-       $product = Product::find($request->id);
+        // idを元にレコードを検索して$articleに代入
+        $product = Product::find($request->id);
         // editで編集されたデータを$productにそれぞれ代入する
         $product->productName = $request->productName;
 

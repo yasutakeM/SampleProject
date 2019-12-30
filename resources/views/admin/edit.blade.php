@@ -7,8 +7,9 @@
 
 @section('header')
 <header class="commonHeader">
+
     <div class="commonHeader--wrap">
-        <div class="commonHeader--inner" style="font-weight: bold;color: #876ca9;font-size: 1.8rem;">
+        <div class="commonHeader--inner admin">
             管理者用ページ
         </div>
 
@@ -18,7 +19,6 @@
                     MENU
                 </a>
             </li>
-
             <li>
                 <a href="#">
                     ログアウト
@@ -26,6 +26,7 @@
             </li>
         </ul>
     </div>
+
 </header>
 @endsection
 
@@ -40,7 +41,7 @@
 
         <div class="loginForm__input">
             <div class="loginForm__input--inner">
-                <form method="post" action="{{ url('/admin') }}/update/{{ $product->id }}" enctype="multipart/form-data">
+                <form method="post" action="{{ url('/admin/update/') }}{{ $product->id }}" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="">
                         <h2 class="title_page">商品情報を更新</h2>

@@ -71,7 +71,7 @@
         @guest
             未ログイン
         @else
-            <span style="color: red;">{{ Auth::user()->name }} </span>としてログイン中
+            <span style="color: red;">{{ Auth::user()->name }}</span>としてログイン中
         @endguest 
         <br>
         カテゴリで絞る
@@ -111,7 +111,7 @@
                                     <a class="orange" href="{{ url('/') }}/{{ $product->id }}/detail">購入</a>
                                 </li>
                                 <li>
-                                    <a class="blue" href="{{ url('/') }}/{{ $product->id }}/detail">詳細</a>
+                                    <a class="blue" href="{{ url('/') }}/detail/{{ $product->id }}">詳細</a>
                                 </li>
                             </ul>
 

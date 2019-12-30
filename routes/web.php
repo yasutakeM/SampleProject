@@ -20,13 +20,13 @@ Route::resource('/', 'TopController');
 
 
 
-
-//Route::get('top','TopController@index');
-
 //商品詳細ページ
-Route::get('/detail', function () {
-    return view('items/detail');
-});
+// Route::get('/detail', function () {
+//     return view('items/detail');
+// });
+
+Route::get('detail/{id}', 'ProductController@show');
+
 
 //会員ログイン
 Route::get('/login', function () {
@@ -42,6 +42,8 @@ Route::get('/regist', function () {
 //管理者
 Route::resource('admin', 'ProductController');
 Route::get('admin/delete/{id}', 'ProductController@destroy');//データ削除
+
+
 /*
 Route::delete('admin/delete/{id}', 'ProductController@destroy');
 
