@@ -15,7 +15,7 @@
         @yield('content')
 
         @yield('pagenation')
-    </div>        
+    </div>  
     @yield('aside')
 </div>
 

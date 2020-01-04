@@ -37,7 +37,6 @@ SHOWブレードです<br><br><br>
         padding: 8px 0;
         vertical-align: top;
     }
-    
     tr> td:first-child{
         text-align: center;
         background:#333;
@@ -57,19 +56,44 @@ SHOWブレードです<br><br><br>
 
     <tr>
         <td>カテゴリ</td>
-        <td>{{$product->category}}</td>
+        <td>
+            @if($product->category =="おもちゃ")
+                <div class="icon toy">
+                    <a href="#">
+                        {{ $product->category }}
+
+            @elseif($product->category =="食品")
+                <div class="icon food">
+                    <a href="#">
+                        {{ $product->category }}
+
+            @elseif($product->category =="ファッション")
+                <div class="icon fashion">
+                    <a href="#">
+                        {{ $product->category }}
+
+            @else
+                <div class="icon uncategorize">
+                    <a href="#">
+                        未分類
+            @endif
+                    </a>
+                </div>
+        </td>
     </tr>
     <tr>
         <td>メイン画像</td>
         <td>
             <div style="width: 100px;">
-            <img class="" src="{{ asset('storage/products/') }}/{{ $product->productImage }}">
-</div>
+                <img class="" src="{{ asset('storage/products/') }}/{{ $product->productImage }}">
+            </div>
         </td>
     </tr>
     <tr>
         <td>サブ画像</td>
-        <td>{{$product->productSubImage}}</td>
+        <td>
+            <img class="" src="{{ asset('storage/products/') }}/{{ $product->productSubImage }}">
+        </td>
     </tr>
 
     <tr>
@@ -78,7 +102,7 @@ SHOWブレードです<br><br><br>
     </tr>
     <tr>
         <td>商品価格</td>
-        <td>{{$product->amount}}</td>
+        <td>{{$product->amount}}ゴールド</td>
     </tr>
 </table>
 

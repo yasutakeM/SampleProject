@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,15 +17,12 @@
 
 Route::resource('/', 'TopController');
 
-
-
 //商品詳細ページ
 // Route::get('/detail', function () {
 //     return view('items/detail');
 // });
 
 Route::get('detail/{id}', 'ProductController@show');
-
 
 //会員ログイン
 Route::get('/login', function () {
@@ -38,15 +34,14 @@ Route::get('/regist', function () {
     return view('entry/regist');
 });
 
-
 //管理者
 Route::resource('admin', 'ProductController');
 Route::get('admin/delete/{id}', 'ProductController@destroy');//データ削除
 
 
+
 /*
 Route::delete('admin/delete/{id}', 'ProductController@destroy');
-
 rute deleteだと以下のエラー
 The GET method is not supported for this route. Supported methods: DELETE.
 */

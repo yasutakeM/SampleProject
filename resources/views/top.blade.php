@@ -1,6 +1,6 @@
 @extends('layouts.common')
- 
-@section('title', 'トップです')
+
+@section('title', 'GUARDIAN SHOP')
 @section('keywords', 'キーワード1,キーワード2,キーワード3')
 @section('description', '説明文')
 
@@ -16,51 +16,53 @@
  
 @section('topArea')
 
-<section class="topAreaWrap">
-    <div class="topArea">
-        <div class="topArea--inner">
-            <a class="topArea--logo" href="{{ url('/') }}">
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+    // タブに対してクリックイベントを適用
+    const tabs = document.getElementsByClassName('tab');
+    for(let i = 0; i < tabs.length; i++) {
+        tabs[i].addEventListener('click', tabSwitch);
+    }
+
+    // タブをクリックすると実行する関数
+    function tabSwitch(){
+        // タブのclassの値を変更
+        document.getElementsByClassName('is-active')[0].classList.remove('is-active');
+        this.classList.add('is-active');
+        // コンテンツのclassの値を変更
+        document.getElementsByClassName('is-show')[0].classList.remove('is-show');
+        const arrayTabs = Array.prototype.slice.call(tabs);
+        const index = arrayTabs.indexOf(this);
+        document.getElementsByClassName('panel')[index].classList.add('is-show');
+    };
+});
+</script>
 
 
-                <h1><img src="{{ asset('storage/logo_white.svg') }}" alt="保護猫があなたの自宅を厳重警備"></h1>
-            </a>
+<div class="container">
+    <div class="content">
 
-            <div class="topArea__catch">
-                <span>優秀な警備員の</span><br>
-                <span>ご機嫌を</span><br>
-                <span>伺おう</span>
+        <div class="content__header">
+
+            <div class="content__header__social clearfix">
+                <div class="social social_plugin_bt_box clearfix">
+
+
+                </div>
             </div>
 
-            <nav class="topArea__memberResist">
-                @if (Route::has('login'))
-                        @auth
-                        <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('ログアウト') }}
-                                    </a>
+            <h1 class="content__header__logo">
+                    <img src="{{ asset('storage/logo_shop.png') }}" width="580" height="370" alt="guardian shop">
+			</h1>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                            <a href="{{ url('/home') }}">Home</a>
-                        @else                            
-                            @if (Route::has('register'))
-                                <a href="{{ route('register') }}">会員登録</a>
-                            @endif
-                            <a href="{{ route('login') }}">ログイン</a>
-                        @endauth
-                @endif
-            </nav>
         </div>
-    </div>
-</section>
+
 @endsection
 
 @section('catch')
 <div class="caption"  name="viewArea" id="viewArea">
     <h2>
-    警備員がご機嫌になるアイテム盛り沢山の<span>架空ECサイトでございます</span>
+    警備員がご機嫌になるアイテム盛り沢山！<span>架空のゲーム内ショップでございます</span>
     </h2>
     <p>警備員のご機嫌を取ることが家内安全への近道となります。<br><span style="color: #ef6464;">＊実際に商品を購入することは出来ませんのでご注意ください。</spa></p>
 </div>
@@ -68,12 +70,8 @@
 
 @section('content')
 
-        @guest
-            未ログイン
-        @else
-            <span style="color: red;">{{ Auth::user()->name }}</span>としてログイン中
-        @endguest 
-        <br>
+
+
         カテゴリで絞る
         <select>
             <option>選択する</option>
@@ -83,9 +81,46 @@
         </select>
         <br><br><br>
 
+    <?php
+        // <h3 class="itemInfo__name title_box">
+        //     @guest
+        //         おすすめ商品
+        //     @else
+        //         <span style="color: red;">{{ Auth::user()->name }}</span>さんにおすすめの商品
+        //     @endguest 
+        // </h3>
+    ?>
+
+
 <section class="itemWrap">
 
+<div class="testwrap">
 
+
+<div class="tab-panel">
+	<!--タブ-->
+	<ul class="tab-group">
+		<li class="tab tab-A is-active">
+            <div>
+                コンテンツ１１１１１１
+            </div>
+        </li>
+		<li class="tab tab-B">
+            <div>
+                コンテンツ２２２２２２
+        </div>
+        </li>
+		<li class="tab tab-C">
+            <div>
+                コンテンツ３３３３３
+            </div>
+        </li>
+	</ul>
+    
+    <div class="panel-group">
+		<div class="panel tab-A is-show"></div>
+		<div class="panel tab-B">登録がありません</div>
+		<div class="panel tab-C">登録がありません</div>
 
 
     <ul class="items">
@@ -146,7 +181,69 @@
             </li>        
     @endforeach            
     </ul>
+
+	</div>
+    </div><!-- tab-panel -->
+
+
+<aside class="sidebar">
+  <div class="memberLink--side">
+
+  @if (Route::has('login'))
+            @auth
+            <a class="dropdown-item button--white" href="#">
+                {{ __('カートを見る') }}
+            </a>
+            <div class="publicWrap">
+              カート内商品
+              <div class="publicInfomation">
+                  <span>9999円</span>
+              </div>
+              <a href="#" class="button--orange">レジへ</a>
+            </div>
+            
+            @else
+                @if (Route::has('register'))
+                    <a href="{{ route('register') }}" class="button--orange">会員登録</a>
+                @endif
+                  <p>会員登録済みの方はこちら</p>
+                  <a href="{{ route('login') }}" class="button--white">ログイン</a>
+            @endauth
+  @endif
+  </div>
+
+
+    
+
+    <h3>イベント情報</h3> 
+    <a href="http://localhost:8888/guardiancat/" class="banner">
+      <img src="{{ asset('storage/banner/event01.png') }}" alt="警備員をお探しの方はこちらから">
+    </a>
+
+ <h3>優秀な警備員をお探しの方はこちら</h3> 
+
+     <a href="http://localhost:8888/guardiancat/" class="banner">
+      <img src="{{ asset('storage/banner/04.gif') }}" alt="警備員をお探しの方はこちらから">
+    </a>
+
+    <a href="http://localhost:8888/guardiancat/" class="banner">
+      <img src="{{ asset('storage/banner/06.jpg') }}" alt="警備員をお探しの方はこちらから">
+    </a>
+
+    <a href="http://localhost:8888/guardiancat/" class="banner">
+      <img src="{{ asset('storage/banner/07.jpg') }}" alt="警備員をお探しの方はこちらから">
+    </a>
+  
+  </aside>
+</div>
 </section>
+
+
+
+
+    
+    </div><!-- //.content -->
+</div><!-- .container -->
 @endsection
 
 
@@ -155,4 +252,3 @@
 @endsection
 
 
-@include('components.aside')

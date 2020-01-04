@@ -87,7 +87,6 @@ class ProductController extends Controller
     public function show(Request $request)
     {
         $product = Product::findOrFail($request->id);
-        // $product->delete();
         return view('show')->with('product', $product);
     }
 
@@ -104,7 +103,7 @@ class ProductController extends Controller
             'product' => Product::findOrFail($id)
           ]);
 
-          \Debugbar::info(Product::findOrFail($id));          
+        //   \Debugbar::info(Product::findOrFail($id));          
     }
 
     // public function edit(Product $product)

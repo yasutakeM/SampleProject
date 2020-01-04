@@ -37,12 +37,11 @@ detailブレードです<br><br><br>
         padding: 4px;
     }
     
-
-tr> td:first-child{
-    text-align: right;
-    background:#333;
-    color: #fff;
-}
+    tr> td:first-child{
+        text-align: right;
+        background:#333;
+        color: #fff;
+    }
 </style>
 
 <div style="width: 60%; margin: 0 auto;">
