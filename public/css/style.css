@@ -281,7 +281,7 @@ background: linear-gradient(transparent 50%, #fff965b0 50%);
 
 .contentsArea{
     max-width: 980px;
-    margin: 24px auto 0;
+    margin: 0 auto;
 }
 .contentsArea__contents{
 	display: flex;
@@ -313,6 +313,7 @@ background: linear-gradient(transparent 50%, #fff965b0 50%);
 		.sidebar{
 			display: none;
 		}
+		
 		@media screen and (min-width: 980px) {
 			.contentsArea__contents > li {
 				float: left;
@@ -344,6 +345,11 @@ background: linear-gradient(transparent 50%, #fff965b0 50%);
 				width: 300px;
 				height: auto;
 			}
+.tab-panel{
+			width: -webkit-calc(100% - 300px);
+			width: calc(100% - 300px);
+}
+
 		}
 
 .toDetail{
@@ -1160,7 +1166,6 @@ color: #777;
 	display: flex;
 	flex-wrap : wrap;
 	justify-content: space-around;
-	width: 780px;
 }
 .items > li{
 	width: -webkit-calc(25% - 12px);
@@ -1361,9 +1366,7 @@ background: linear-gradient(to bottom, rgb(255, 176, 30) 0%,rgb(78, 53, 6) 100%)
     /* background: #20202e; */
 }
 
-.content {
 
-}
 .content__header {
     width: 960px;
     margin: 0 auto;
@@ -1387,6 +1390,10 @@ background: linear-gradient(to bottom, rgb(255, 176, 30) 0%,rgb(78, 53, 6) 100%)
     display: flex;
     justify-content: center;
 }
+.tab-panel{
+width: 100%;
+	margin-right: 12px;
+}
 .tab{
     border-radius: 10px 10px 0 0;
     padding: 2px 2px 0 2px;
@@ -1398,7 +1405,7 @@ background: linear-gradient(to bottom, rgb(255, 176, 30) 0%,rgb(78, 53, 6) 100%)
 }
 .tab div{
     border-radius: 8px 8px 0 0;
-    padding:10px 0;
+    padding:12px;
     font-size: 1.6rem;
     color: #fffede;
     font-weight: bold;
@@ -1411,6 +1418,7 @@ background: linear-gradient(to bottom, rgb(255, 176, 30) 0%,rgb(78, 53, 6) 100%)
 .tab:last-child{
     margin-right: 0;
 }
+
 .panel-group{
 	position: relative;
 	z-index: 20;
@@ -1418,7 +1426,7 @@ background: linear-gradient(to bottom, rgb(255, 176, 30) 0%,rgb(78, 53, 6) 100%)
 	border: 2px solid #ddbf64;
 	box-shadow: inset 0px -6px 4px rgba(0,0,0,.4);
 	margin-top:-2px;
-	padding: 12px;
+	padding: 24px 12px 12px 12px;
 
 }
 
@@ -1457,7 +1465,9 @@ background: linear-gradient(to bottom, rgb(255, 176, 30) 0%,rgb(78, 53, 6) 100%)
   background-image: -ms-linear-gradient( 90deg, rgb(142,137,127) 29%, rgb(241,224,185) 86%, rgb(235,218,179) 100%);
 
     transition: all 0.2s ease-out;
-    position: relative;
+	position: relative;
+	color: #2c2a25;
+    text-shadow: 0 0 3px rgba(255,255,255,.8);
 }
 .tab.is-active div:after{
     content: "";

@@ -102,26 +102,34 @@ document.addEventListener('DOMContentLoaded', function(){
 	<ul class="tab-group">
 		<li class="tab tab-A is-active">
             <div>
-                コンテンツ１１１１１１
+                すべて
+                
             </div>
         </li>
 		<li class="tab tab-B">
             <div>
-                コンテンツ２２２２２２
+            おもちゃ
+                
         </div>
         </li>
 		<li class="tab tab-C">
             <div>
-                コンテンツ３３３３３
+            食品
+               
+            </div>
+        </li>
+		<li class="tab tab-D">
+            <div>
+            ファッション
             </div>
         </li>
 	</ul>
     
     <div class="panel-group">
-		<div class="panel tab-A is-show"></div>
-		<div class="panel tab-B">登録がありません</div>
-		<div class="panel tab-C">登録がありません</div>
+		<div class="panel tab-A is-show">
 
+
+        
 
     <ul class="items">
     @foreach($products as $product)
@@ -181,6 +189,13 @@ document.addEventListener('DOMContentLoaded', function(){
             </li>        
     @endforeach            
     </ul>
+
+    </div>
+		<div class="panel tab-B">おもちゃ</div>
+		<div class="panel tab-C">食品</div>
+        <div class="panel tab-D">ファッション</div>
+        
+
 
 	</div>
     </div><!-- tab-panel -->

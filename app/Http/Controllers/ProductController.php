@@ -37,8 +37,6 @@ class ProductController extends Controller
         return view('admin.create');
     }
 
-
-
     /**
      * Store a newly created resource in storage.
      *
@@ -65,7 +63,6 @@ class ProductController extends Controller
         // ここで画像を移動
         $request->file('productImage')->storeAs('public/products', $request->file('productImage')->getClientOriginalName());
         $request->file('productSubImage')->storeAs('public/products', $request->file('productSubImage')->getClientOriginalName());        
-
         return view('admin.detail')->with('product', $product);
     }
 
