@@ -35,12 +35,13 @@ detailブレードです<br><br><br>
 <style>
     td{
         padding: 4px;
+        color: #fff;
     }
     
     tr> td:first-child{
         text-align: right;
         background:#333;
-        color: #fff;
+        vertical-align: top;
     }
 </style>
 
@@ -57,11 +58,14 @@ detailブレードです<br><br><br>
     </tr>
     <tr>
         <td>メイン画像</td>
-        <td>{{$product->productImage}}</td>
+        <td>
+        <img src="{{ asset('storage/products') }}/{{$product->productImage}}" width="580" height="370" alt="guardian shop">
+        </td>
     </tr>
     <tr>
         <td>サブ画像</td>
-        <td>{{$product->productSubImage}}</td>
+        <td>
+        <img src="{{ asset('storage/products') }}/{{$product->productSubImage}}" width="580" height="370" alt="guardian shop"></td>
     </tr>
     <tr>
         <td>商品説明</td>

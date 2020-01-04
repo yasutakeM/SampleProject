@@ -41,7 +41,7 @@
 
         <div class="loginForm__input">
             <div class="loginForm__input--inner">
-                <form method="post" action="{{ url('/admin/update/') }}{{ $product->id }}" enctype="multipart/form-data">
+                <form method="post" action="{{ url('/admin/update/') }}/{{ $product->id }}" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="">
                         <h2 class="title_page">商品情報を更新</h2>
