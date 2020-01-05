@@ -3,6 +3,13 @@
 @section('title', '管理者メニュー')
 @section('keywords', 'キーワード1,キーワード2,キーワード3')
 @section('description', '説明文')
+
+@section('css')
+<!-- bootstrap -->
+<script src="{{ asset('js/app.js') }}" defer></script>
+<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+@endsection
+
 @include('components.head')
 
 @section('header')
@@ -33,7 +40,6 @@
 @section('topArea')
 
 
-
 <ul class="pagination">
     <li class="previous">
     <span rel="prev" class="off">&nbsp;</span>
@@ -60,9 +66,53 @@
 </a>
 
 
+
+<table class="table">
+        <tbody>
+            @foreach ($products as $product)
+            <tr>
+                <td class="left">{{$product->productName}}</td>
+                <td><a href="#">編集</a></td>
+                <td><a type="button" data-toggle="modal" data-target="#modal{{$product->id}}">削除</a></td>
+            </tr>
+            <!-- Modal -->
+            <div class="modal fade" id="modal{{$product->id}}" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">以下の商品を削除しますか？</h5>
+                            <button type="button" class="close" data-dismiss="modal">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            {{$product->productName}}
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+                            <button type="button" class="btn btn-primary"
+                                onclick="location.href='{{ route('delete', ['id' => $product->id])}}'">
+                                削除
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </tbody>
+    </table>
+
+
+
+
+
+
+
+
+
+
   <h3 class="page_title"><i class="icon--cat tinRightOut"></i>警備員一覧<span>1ページ目</span></h3>
         <ul class="contentsArea__contents">
-
 
 @foreach($products as $product)
                 <li>
