@@ -61,60 +61,24 @@
 <div class="contentsArea" style="margin: 0 auto;">
 
 
-<a href="{!! action('ProductController@index') !!}/create">
+
+
+
+
+
+<a class="button--orange" href="{!! action('ProductController@index') !!}/create" style="width: 120px; margin: 24px auto 48px">
 商品登録
 </a>
 
 
 
-<table class="table">
-        <tbody>
-            @foreach ($products as $product)
-            <tr>
-                <td class="left">{{$product->productName}}</td>
-                <td><a href="#">編集</a></td>
-                <td><a type="button" data-toggle="modal" data-target="#modal{{$product->id}}">削除</a></td>
-            </tr>
-            <!-- Modal -->
-            <div class="modal fade" id="modal{{$product->id}}" tabindex="-1" role="dialog" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">以下の商品を削除しますか？</h5>
-                            <button type="button" class="close" data-dismiss="modal">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            {{$product->productName}}
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
-                            <button type="button" class="btn btn-primary"
-                                onclick="location.href='{{ route('delete', ['id' => $product->id])}}'">
-                                削除
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @endforeach
-        </tbody>
-    </table>
 
 
 
 
 
-
-
-
-
-
-  <h3 class="page_title"><i class="icon--cat tinRightOut"></i>警備員一覧<span>1ページ目</span></h3>
         <ul class="contentsArea__contents">
-
-@foreach($products as $product)
+            @foreach($products as $product)
                 <li>
                       <section class="male toDetail">
                           <h3 class="catName">{{ $product->productName }}</h3>
@@ -166,7 +130,7 @@
 
                                 <li>  
 
-                                <a href="{{ route('delete', ['id' => $product->id])}}" class="button--white">削除</a>
+                                <a class="button--white" type="button" data-toggle="modal" data-target="#modal{{$product->id}}">削除</a>
 
                                 <?php 
                                 // <a href="{{ url('/admin') }}/delete/{{$product->id}}" class="button--white">削除</a>
@@ -175,15 +139,36 @@
                                 ?>
                                 </li>
                           </ul>
-</section>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="modal{{$product->id}}" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">削除しますか？</h5>
+                                            <button type="button" class="close" data-dismiss="modal">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body" style="text-align: center;font-size:1.6rem; color: red;">
+                                            {{$product->productName}}
+                                            <div class="contentsImage">
+                                                <img class="" src="{{ asset('storage/products/') }}/{{ $product->productImage }}">
+                                        </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+                                            <button type="button" class="btn btn-primary"
+                                                onclick="location.href='{{ route('delete', ['id' => $product->id])}}'">
+                                                削除
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </section>
                 </li>
-
-
-
 @endforeach
-
-
-
 
 </ul>
 
