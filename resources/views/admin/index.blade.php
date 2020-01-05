@@ -52,15 +52,17 @@
     </li>
 </ul>
 
-  <div class="contentsArea" style="margin: 0 auto;">
+<div class="contentsArea" style="margin: 0 auto;">
 
 
 <a href="{!! action('ProductController@index') !!}/create">
 商品登録
 </a>
 
+
   <h3 class="page_title"><i class="icon--cat tinRightOut"></i>警備員一覧<span>1ページ目</span></h3>
         <ul class="contentsArea__contents">
+
 
 @foreach($products as $product)
                 <li>
@@ -113,10 +115,14 @@
                                 </li>
 
                                 <li>  
-                                
-                                <a href="{{ url('/admin') }}/delete/{{$product->id}}" class="button--white">削除</a>
 
-                                <?php //<a href="admin/delete/{{ $product->id }}" class="button--white">削除</a> ?>
+                                <a href="{{ route('delete', ['id' => $product->id])}}" class="button--white">削除</a>
+
+                                <?php 
+                                // <a href="{{ url('/admin') }}/delete/{{$product->id}}" class="button--white">削除</a>
+                                
+                                //<a href="admin/delete/{{ $product->id }}" class="button--white">削除</a> 
+                                ?>
                                 </li>
                           </ul>
 </section>

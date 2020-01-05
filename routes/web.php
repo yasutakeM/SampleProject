@@ -36,8 +36,9 @@ Route::get('/regist', function () {
 
 //管理者
 Route::resource('admin', 'ProductController');
-Route::get('admin/delete/{id}', 'ProductController@destroy');//データ削除
+//Route::get('admin/delete/{id}', 'ProductController@destroy');//データ削除
 
+Route::get('admin/delete/{id}', 'ProductController@destroy')->name('delete');
 
 
 /*

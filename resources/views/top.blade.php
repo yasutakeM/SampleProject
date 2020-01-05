@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', function(){
                 <article class="itemFrame">
                     <h3 class="itemInfo__name">{{ $product->productName }}</h3>
                         <div class="itemImage">
-                        <img class="" src="{{ asset('storage/products/') }}/{{ $product->productImage }}">
+                            <img class="" src="{{ asset('storage/products/') }}/{{ $product->productImage }}">
                         </div>
 
                     <div class="itemInfo">
@@ -185,13 +185,75 @@ document.addEventListener('DOMContentLoaded', function(){
                         </div><!--inner-->
                     </div>
                 </article>
-
-            </li>        
+            </li>
     @endforeach            
     </ul>
 
-    </div>
-		<div class="panel tab-B">おもちゃ</div>
+    </div><!-- すべてパネル -->
+
+		<div class="panel tab-B">おもちゃ
+
+
+
+    <ul class="items">
+    @foreach($products as $product)
+            <li class="">
+                
+                <article class="itemFrame">
+                    <h3 class="itemInfo__name">{{ $product->productName }}</h3>
+                        <div class="itemImage">
+                            <img class="" src="{{ asset('storage/products/') }}/{{ $product->productImage }}">
+                        </div>
+
+                    <div class="itemInfo">
+                        <div class="itemInfo__inner">
+                            
+                            <span>残数：{{$product->remaining}}</span>
+                            <div class="icon price">
+                                {{$product->amount}}<span>ゴールド</span>
+                            </div>
+
+                            <ul class="operation button--product">
+                                <li>
+                                    <a class="orange" href="{{ url('/') }}/{{ $product->id }}/detail">購入</a>
+                                </li>
+                                <li>
+                                    <a class="blue" href="{{ url('/') }}/detail/{{ $product->id }}">詳細</a>
+                                </li>
+                            </ul>
+
+                                @if($product->category =="おもちゃ")
+                                    <div class="icon toy">
+                                        <a href="#">
+                                            {{ $product->category }}
+
+                                @elseif($product->category =="食品")
+                                    <div class="icon food">
+                                        <a href="#">
+                                            {{ $product->category }}
+
+                                @elseif($product->category =="ファッション")
+                                    <div class="icon fashion">
+                                        <a href="#">
+                                            {{ $product->category }}
+
+                                @else
+                                    <div class="icon uncategorize">
+                                        <a href="#">
+                                            未分類
+
+                                @endif
+                                        </a>
+                                    </div>
+
+                        </div><!--inner-->
+                    </div>
+                </article>
+            </li>
+    @endforeach            
+    </ul>
+
+        </div>
 		<div class="panel tab-C">食品</div>
         <div class="panel tab-D">ファッション</div>
         
