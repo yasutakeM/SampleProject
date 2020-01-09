@@ -234,7 +234,9 @@
 
 
 	</div>
+
     </div><!-- tab-panel -->
+
 
 
 <aside class="sidebar">
@@ -299,7 +301,5 @@
 
 
 @section('pagenation')
-    @include('components.pagenation')
+    {{ $products->links() }}
 @endsection
-
-

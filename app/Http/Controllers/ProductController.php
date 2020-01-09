@@ -10,7 +10,8 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Respons
+     * e
      */
 
     public function index()

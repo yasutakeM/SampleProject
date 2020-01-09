@@ -5,22 +5,18 @@
 
 @section('topArea')
 
-{{$msg}}
+    {{$msg}}
+    <br>
+    {{$test}}
+    <br><br>
 
-<br>
+    @foreach($products as $product)
+    <div style="color: #fff;">
+        {{ $product->productName }}
+    </div>
+    @endforeach
 
-{{$test}}
-
-<br><br>
-
-
-@foreach($products as $product)
-<div style="color: #fff;">
-    {{ $product->productName }}
-</div>
-@endforeach
-
-
-
+    aaaaaaaaaaaa
+    {{ $products->links() }}
 
 @endsection
