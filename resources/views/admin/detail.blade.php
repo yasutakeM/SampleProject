@@ -33,7 +33,7 @@
 detailブレードです<br><br><br>
 
 <style>
-    td{
+    /* td{
         padding: 4px;
         color: #fff;
     }
@@ -42,7 +42,7 @@ detailブレードです<br><br><br>
         text-align: right;
         background:#333;
         vertical-align: top;
-    }
+    } */
 </style>
 
 <div style="width: 60%; margin: 0 auto;">

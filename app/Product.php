@@ -12,7 +12,7 @@ class Product extends Model
     [製品名]を入力可能なプロパティに追加して、[アプリ\製品]に一括割り当てできるようにします。
     */
     protected $fillable = [
-        'productName',
+        'productName','productImage','productSubImage','category','explanation','remaining','amount'
     ];
 
 }

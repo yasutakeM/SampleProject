@@ -60,6 +60,7 @@
                                 <option value="" selected="">選択してください</option>
                                 <option value="食品">食品</option>
                                 <option value="おもちゃ"">おもちゃ</option>
+                                <option value="ファッション">ファッション</option>
                                 <option value="生活">生活</option>
                             </select>
 

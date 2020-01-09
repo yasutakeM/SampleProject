@@ -12,7 +12,8 @@ class TopController extends Controller
     public function index()
     {
         $data=[
-          'products' => Product::all()
+          // 'products' => Product::all()//全データ取得
+          'products' => \App\Product::orderBy('created_at', 'desc')->paginate(5)//最新から５件取得
         ];
         return view('top', $data);
 
@@ -25,19 +26,16 @@ class TopController extends Controller
     public function view()
     {
         $data = [
-          'msg' => 'こんにちは、世界！'
+          'msg' => 'こんにちは、世界！',
+          'test' => 'TopController経由のテスト表示'          
         ];
-        return view('hello.view', $data);
+
+        $data2=[
+          // 'products' => Product::all()//全データ取得
+          'products' => \App\Product::orderBy('created_at', 'desc')->paginate(5)//最新から５件取得
+        ];
+
+        return view('hello.view', $data,$data2);
       }
 
-      public function list()
-      {
-        $data = [
-          'records' => Book::all()
-
-          // 生のSQL
-          // 'records' => DB::select('SELECT * FROM books')
-        ];
-        return view('hello.list', $data);
-      }
 }

@@ -16,7 +16,7 @@
 // });
 
 Route::resource('/', 'TopController');
-
+Route::get('/hello/view', 'TopController@view');
 //商品詳細ページ
 // Route::get('/detail', function () {
 //     return view('items/detail');

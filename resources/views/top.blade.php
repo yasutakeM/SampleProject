@@ -1,42 +1,16 @@
 @extends('layouts.common')
 
 @section('title', 'GUARDIAN SHOP')
-@section('keywords', 'キーワード1,キーワード2,キーワード3')
-@section('description', '説明文')
-
-@section('css')
-<link rel="stylesheet" href="{{ asset('/css/flickity-docs.css') }}" media="screen">
-@endsection
+@section('keywords', '警備員','ご機嫌','アイテム')
+@section('description', '警備員がご機嫌になるアイテム盛り沢山！')
 
 @section('script')
-<script src="{{ asset('/js/flickity-docs.min.js') }}"></script>
+<script src="{{ asset('js/tab.js') }}"></script>
 @endsection
 
 @include('components.head')
  
 @section('topArea')
-
-<script>
-document.addEventListener('DOMContentLoaded', function(){
-    // タブに対してクリックイベントを適用
-    const tabs = document.getElementsByClassName('tab');
-    for(let i = 0; i < tabs.length; i++) {
-        tabs[i].addEventListener('click', tabSwitch);
-    }
-
-    // タブをクリックすると実行する関数
-    function tabSwitch(){
-        // タブのclassの値を変更
-        document.getElementsByClassName('is-active')[0].classList.remove('is-active');
-        this.classList.add('is-active');
-        // コンテンツのclassの値を変更
-        document.getElementsByClassName('is-show')[0].classList.remove('is-show');
-        const arrayTabs = Array.prototype.slice.call(tabs);
-        const index = arrayTabs.indexOf(this);
-        document.getElementsByClassName('panel')[index].classList.add('is-show');
-    };
-});
-</script>
 
 
 <div class="container">
@@ -56,7 +30,6 @@ document.addEventListener('DOMContentLoaded', function(){
 			</h1>
 
         </div>
-
 @endsection
 
 @section('catch')
@@ -73,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
 
         カテゴリで絞る
-        <select>
+        <select>    
             <option>選択する</option>
             <option>グルメ</option>
             <option>休暇</option>
@@ -157,6 +130,7 @@ document.addEventListener('DOMContentLoaded', function(){
                                     <a class="blue" href="{{ url('/') }}/detail/{{ $product->id }}">詳細</a>
                                 </li>
                             </ul>
+
 
                                 @if($product->category =="おもちゃ")
                                     <div class="icon toy">

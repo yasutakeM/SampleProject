@@ -61,21 +61,9 @@
 <div class="contentsArea" style="margin: 0 auto;">
 
 
-
-
-
-
-
 <a class="button--orange" href="{!! action('ProductController@index') !!}/create" style="width: 120px; margin: 24px auto 48px">
 商品登録
 </a>
-
-
-
-
-
-
-
 
         <ul class="contentsArea__contents">
             @foreach($products as $product)
@@ -106,7 +94,7 @@
 
                                     <li>
                                         <div>価格</div>
-                                        <div>{{$product->amount}}円</div>
+                                        <div>{{$product->amount}}ゴールド</div>
                                     </li>
 
                                   </ul>
