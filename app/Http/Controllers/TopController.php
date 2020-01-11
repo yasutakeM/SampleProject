@@ -18,11 +18,13 @@ class TopController extends Controller
         //   'products' => \App\Product::orderBy('created_at', 'desc')->paginate(8)//最新から8件取得
         // ];
 
-        $data = DB::table('product')
-            ->join('category', 'category.id', '=', 'product.category')
-            ->select('product.*', 'category.name')
+
+        
+        $data = DB::table('products')
+            ->join('categories', 'categories.id', '=', 'products.category')
+            ->select('products.*', 'categories.name')
             ->get();
- 
+
 //
           // dd($data);
         // return view('posts.index', compact('posts'));
@@ -36,6 +38,8 @@ class TopController extends Controller
         // ]);
     }
 
+
+    
     public function view()
     {
         $data = [

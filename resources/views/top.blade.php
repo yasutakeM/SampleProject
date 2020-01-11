@@ -132,22 +132,20 @@
                             </ul>
 
 
-
-
                                 @if($product->category == 1)
                                     <div class="icon toy">
                                         <a href="#">
                                             {{ $product->name }}
 
-                                @elseif($product->category =="2")
+                                @elseif($product->category == 2)
                                     <div class="icon food">
                                         <a href="#">
-                                            {{ $product->category }}
+                                            {{ $product->name }}
 
-                                @elseif($product->category =="ファッション")
+                                @elseif($product->category == 3)
                                     <div class="icon fashion">
                                         <a href="#">
-                                            {{ $product->category }}
+                                            {{ $product->name }}
 
                                 @else
                                     <div class="icon uncategorize">
