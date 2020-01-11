@@ -20,17 +20,12 @@ class TopController extends Controller
 
 
         
-        $data = DB::table('products')
+        $products = DB::table('products')
             ->join('categories', 'categories.id', '=', 'products.category')
-            ->select('products.*', 'categories.name')
-            ->get();
+            ->select('products.*', 'categories.name')->paginate(8);
 
-//
-          // dd($data);
-        // return view('posts.index', compact('posts'));
-
-        
-        return view('top.index', compact('data'));
+          //  dd($data);
+         return view('top', compact('products'));
 
         // $product = Product::all();   // 全データ取得
         // return view('top', [

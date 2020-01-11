@@ -133,7 +133,7 @@
 
 
                                 @if($product->category == 1)
-                                    <div class="icon toy">
+                                    <div class="icon food">
                                         <a href="#">
                                             {{ $product->name }}
 
@@ -147,6 +147,10 @@
                                         <a href="#">
                                             {{ $product->name }}
 
+                                @elseif($product->category == 4)
+                                    <div class="icon toy">
+                                        <a href="#">
+                                            {{ $product->name }}
                                 @else
                                     <div class="icon uncategorize">
                                         <a href="#">
@@ -196,10 +200,10 @@
                                 </li>
                             </ul>
 
-                                @if($product->category =="おもちゃ")
+                                @if($product->category == 1)
                                     <div class="icon toy">
                                         <a href="#">
-                                            {{ $product->category }}
+                                            {{ $product->name }}
 
                                 @elseif($product->category =="食品")
                                     <div class="icon food">
