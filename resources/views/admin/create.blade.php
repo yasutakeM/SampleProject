@@ -55,14 +55,16 @@
                             <label>商品画像（サブ）</label>
                             <input type="file" name="productSubImage">
 
+
+
+
                             <label>商品カテゴリ</label>
-                            <select name="category" class="selectNormal">
-                                <option value="" selected="">選択してください</option>
-                                <option value="食品">食品</option>
-                                <option value="おもちゃ"">おもちゃ</option>
-                                <option value="ファッション">ファッション</option>
-                                <option value="生活">生活</option>
-                            </select>
+      <select name="category" class="selectNormal" value="{{old('category')}}">
+        <option value="" selected="">選択してください</option>
+                @foreach($category as $value)
+                    <option value="{{ $value->id }}">{{ $value->name }}</option>
+                @endforeach
+        </select>
 
                             <label>商品説明</label>
                             <textarea style="height: calc( 1.3em * 5 ); line-height: 1.3;"type="text" name="explanation"></textarea>

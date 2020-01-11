@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use App\Category;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -19,7 +20,7 @@ class ProductController extends Controller
         //$product = Product::all(); //Postのデータ全て$postsに代入(データ全件取得)
         // $product = Product::all();   // 全データ取得（古い順）
         // $product = Product::orderBy('created_at', 'desc')->get();//最新から表示する
-        $product = \App\Product::orderBy('created_at', 'desc')->paginate(5);//最新から５件取得
+        $product = \App\Product::orderBy('created_at', 'desc')->paginate(8);//最新から５件取得
 
         return view('admin.index', [
             "products" => $product
@@ -38,7 +39,8 @@ class ProductController extends Controller
     {
         //
         // $product->image_url = $request->image_url->storeAs('public/images/products', $time.'_'.Auth::user()->id . '.jpg');
-        return view('admin.create');
+        $category = Category::query()->get();
+        return view('admin.create')->with(compact('category'));
     }
 
 
