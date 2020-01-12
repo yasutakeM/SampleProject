@@ -22,7 +22,8 @@ class TopController extends Controller
         
         $products = DB::table('products')
             ->join('categories', 'categories.id', '=', 'products.category')
-            ->select('products.*', 'categories.name')->paginate(8);
+            ->select('products.*', 'categories.name')
+            ->orderBy('created_at', 'desc')->paginate(8);
 
           //  dd($data);
          return view('top', compact('products'));
