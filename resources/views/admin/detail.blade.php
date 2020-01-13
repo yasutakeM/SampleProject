@@ -33,7 +33,7 @@
 detailブレードです<br><br><br>
 
 <style>
-    /* td{
+    td{
         padding: 4px;
         color: #fff;
     }
@@ -42,11 +42,11 @@ detailブレードです<br><br><br>
         text-align: right;
         background:#333;
         vertical-align: top;
-    } */
+    }
 </style>
 
 <div style="width: 60%; margin: 0 auto;">
-<div style="background: #ccc;color: #333;padding: 5px;text-align: center;">登録内容</div>
+<div style="background: #ccc;color: #fff;padding: 5px;text-align: center;">登録内容</div>
 <table style="width: 100%;">
     <tr>
         <td>商品名</td>
@@ -81,7 +81,7 @@ detailブレードです<br><br><br>
     </tr>
 </table>
 </div>
-<br><br>
+<br>
 
 <a href="{{ url('/admin') }}/{{$product->id}}/edit">登録内容の変更</a>
 <a href="{{ url('/admin/create') }}">新規商品登録</a>

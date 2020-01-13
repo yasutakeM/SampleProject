@@ -84,7 +84,7 @@
                                         </li>
                                       <li>
                                           <div>カテゴリ</div>
-                                          <div>{{ $product->category }}</div>
+                                          <div>{{ $product->name }}</div>
                                     </li>
 
                                     <li>

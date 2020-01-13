@@ -54,20 +54,18 @@
                             <input type="file" name="productImage" value="{{ old('productImage', $product->productImage) }}">
                             <input type="hidden" name="productImage_h" value="{{ $product->productImage }}">
 
-
                             <label>サブ画像(変更する場合のみ選択してください)</label>
                             <input type="file" name="productSubImage" value="{{ old('productSubImage', $product->productSubImage) }}">
                               <input type="hidden" name="productSubImage_h" value="{{ $product->productSubImage }}">
 
                             <label>商品カテゴリ</label>
-                            <select name="category" class="selectNormal">
-                                <option value="{{ old('category', $product->category) }}" selected="">
-                                {{ old('category', $product->category) }}
-                                </option>
-                                <option value="食品">食品</opti食品on>
-                                <option value="おもちゃ">おもちゃ</option>
-                                <option value="ファッション">ファッション</option>
+                            <select name="category" class="selectNormal" value="">
+                                    <option value="{{ old('category', $product->category) }}" selected="">{{ old('category', $product->category) }}</option>
+                                    @foreach($category as $value)
+                                        <option value="{{ $value->id }}">{{ $value->name }}</option>
+                                    @endforeach
                             </select>
+                            
 
                             <label>商品説明</label>
                             <textarea style="height: calc( 1.3em * 5 ); line-height: 1.3;"type="text" name="explanation" value="{{ old('explanation', $product->explanation) }}">{{ old('explanation', $product->explanation) }}</textarea>

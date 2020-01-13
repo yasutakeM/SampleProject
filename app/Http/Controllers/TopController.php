@@ -23,9 +23,9 @@ class TopController extends Controller
         $products = DB::table('products')
             ->join('categories', 'categories.id', '=', 'products.category')
             ->select('products.*', 'categories.name')
-            ->orderBy('created_at', 'desc')->paginate(8);
+            ->orderBy('products.created_at', 'desc')->paginate(8);
 
-          //  dd($data);
+          //  dd($products);
          return view('top', compact('products'));
 
         // $product = Product::all();   // 全データ取得
