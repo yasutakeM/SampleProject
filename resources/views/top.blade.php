@@ -133,7 +133,7 @@
 
 
                                 @if($product->category == 1)
-                                    <div class="icon food">
+                                    <div class="icon toy">
                                         <a href="#">
                                             {{ $product->name }}
 

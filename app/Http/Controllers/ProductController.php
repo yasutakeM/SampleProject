@@ -103,8 +103,17 @@ class ProductController extends Controller
 
     public function show(Request $request)
     {
-        $product = Product::findOrFail($request->id);
-        return view('show')->with('product', $product);
+        // $product = Product::findOrFail($request->id);
+
+        $products = DB::table('products')
+            ->join('categories', 'categories.id', '=', 'products.category')
+            ->select('products.*', 'categories.name')
+            ->where('category.id', '=', 'product.category')
+            ->get();
+
+            // dd($products);
+        return view('show', compact('products'));
+        // return view('show')->with('products', $products);
     }
 
     /**

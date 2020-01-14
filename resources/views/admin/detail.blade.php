@@ -54,7 +54,7 @@ detailブレードです<br><br><br>
     </tr> 
     <tr>
         <td>カテゴリ</td>
-        <td>{{$product->category}}</td>
+        <td>{{$product->name}}</td>
     </tr>
     <tr>
         <td>メイン画像</td>
