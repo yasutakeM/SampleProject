@@ -13,50 +13,29 @@
 @include('components.head')
 
 @section('header')
-<header class="commonHeader">
-    <div class="commonHeader--wrap">
-        <div class="commonHeader--inner admin">
-            管理者用ページ
-        </div>
+<div class="memberLink--side">
 
-        <ul class="commonHeader__menu">
-            <li>
-                <a href="/admin/menu"class="commonHeader__menu--menuButton" id="show">
-                    MENU
+@if (Route::has('login'))
+            @auth
+                <a href="{{ route('admin.logout') }}" class="button--white">
+                    ログアウトする
                 </a>
-            </li>
-
-            <li>
-                <a href="#">
-                    ログアウト
-                </a>
-            </li>
-        </ul>
-    </div>
-</header>
+            @else
+                @if (Route::has('register'))
+                    <a href="{{ route('admin.register') }}" class="button--orange">会員登録</a>
+                @endif
+                <p>会員登録済みの方はこちら</p>
+                <a href="{{ route('admin.login') }}" class="button--white">ログイン</a>
+            @endauth
+@endif
+</div>
 @endsection
 
 
 @section('topArea')
 
 
-<ul class="pagination">
-    <li class="previous">
-    <span rel="prev" class="off">&nbsp;</span>
-    </li>
-    <li>
-    <a class='now_page' href="?page=1">1</a>
-    </li>
-    <li>
-    <a  href="?page=2">2</a>
-    </li>
-    <li>
-    <a  href="?page=3">3</a>
-    </li>
-    <li class="next">
-    <a href="?page=2" rel="next"></a>
-    </li>
-</ul>
+
 
 <div class="contentsArea" style="margin: 0 auto;">
 

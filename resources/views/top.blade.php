@@ -123,11 +123,14 @@
                             </div>
 
                             <ul class="operation button--product">
+
                                 <li>
-                                    <a class="orange" href="{{ url('/') }}/{{ $product->id }}/detail">購入</a>
+                                    <a class="blue" href="{{ url('/') }}/show/{{ $product->id }}">詳細</a>
                                 </li>
                                 <li>
-                                    <a class="blue" href="{{ url('/') }}/detail/{{ $product->id }}">詳細</a>
+                                <div>
+                                    <a class="orange" href="{{ url('/') }}/{{ $product->id }}/detail">購入</a>
+                                    </div>
                                 </li>
                             </ul>
 
@@ -174,61 +177,7 @@
 
 
     <ul class="items">
-    @foreach($products as $product)
-            <li class="">
-                
-                <article class="itemFrame">
-                    <h3 class="itemInfo__name">{{ $product->productName }}</h3>
-                        <div class="itemImage">
-                            <img class="" src="{{ asset('storage/products/') }}/{{ $product->productImage }}">
-                        </div>
-
-                    <div class="itemInfo">
-                        <div class="itemInfo__inner">
-                            
-                            <span>残数：{{$product->remaining}}</span>
-                            <div class="icon price">
-                                {{$product->amount}}<span>ゴールド</span>
-                            </div>
-
-                            <ul class="operation button--product">
-                                <li>
-                                    <a class="orange" href="{{ url('/') }}/{{ $product->id }}/detail">購入</a>
-                                </li>
-                                <li>
-                                    <a class="blue" href="{{ url('/') }}/detail/{{ $product->id }}">詳細</a>
-                                </li>
-                            </ul>
-
-                                @if($product->category == 1)
-                                    <div class="icon toy">
-                                        <a href="#">
-                                            {{ $product->name }}
-
-                                @elseif($product->category =="食品")
-                                    <div class="icon food">
-                                        <a href="#">
-                                            {{ $product->category }}
-
-                                @elseif($product->category =="ファッション")
-                                    <div class="icon fashion">
-                                        <a href="#">
-                                            {{ $product->category }}
-
-                                @else
-                                    <div class="icon uncategorize">
-                                        <a href="#">
-                                            未分類
-
-                                @endif
-                                        </a>
-                                    </div>
-
-                        </div><!--inner-->
-                    </div>
-                </article>
-            </li>
-    @endforeach            
+<li>おもちゃ</li>  
     </ul>
 
         </div>

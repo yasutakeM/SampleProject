@@ -30,7 +30,10 @@
 
 
 @section('topArea')
-detailブレードです<br><br><br>
+<span style="color: #fff;">
+views/admin/detail.blade.php です
+</span>
+
 
 <style>
     td{
@@ -45,9 +48,11 @@ detailブレードです<br><br><br>
     }
 </style>
 
+
 <div style="width: 60%; margin: 0 auto;">
 <div style="background: #ccc;color: #fff;padding: 5px;text-align: center;">登録内容</div>
 <table style="width: 100%;">
+    @foreach($products as $product)
     <tr>
         <td>商品名</td>
         <td>{{$product->productName}}</td>
@@ -79,6 +84,7 @@ detailブレードです<br><br><br>
         <td>商品価格</td>
         <td>{{$product->amount}}</td>
     </tr>
+    @endforeach
 </table>
 </div>
 <br>

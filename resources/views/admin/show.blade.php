@@ -32,7 +32,9 @@
 
 @section('topArea')
 
-showブレードです
+<span style="color: #fff;">
+views/admin/show.blade.php です
+</span>
 
 
 

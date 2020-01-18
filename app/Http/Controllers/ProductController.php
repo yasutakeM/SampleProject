@@ -79,14 +79,31 @@ class ProductController extends Controller
         $request->file('productImage')->storeAs('public/products', $request->file('productImage')->getClientOriginalName());
         $request->file('productSubImage')->storeAs('public/products', $request->file('productSubImage')->getClientOriginalName());        
 
-        $products = DB::table('products')
-        ->join('categories', 'categories.id', '=', 'products.category')
-        ->select('products.*', 'categories.name');
 
-        return view('admin.detail')->with('product', $product,$products);
+        // $products = DB::table('products')
+        // ->select('products.*', 'categories.categoryName')
+        // ->join('categories', 'categories.id', '=', 'products.category')
+        // ->where('products.id', $id)
+        // ->get();
+ //dd($products);
+
+         return redirect(route('detail', $product->id));
+
+        // return view('admin.detail')->with('product', $product,$products);
     }
 
  
+    public function detail(Request $request)
+    {
+        $products = DB::table('products')
+        ->select('products.*', 'categories.name')
+        ->join('categories', 'categories.id', '=', 'products.category')
+        ->where('products.id', $request->id)
+        ->get();
+
+        return view('admin.detail', compact('products'));
+    }
+
     /**
      * Display the specified resource.
      *
@@ -103,18 +120,22 @@ class ProductController extends Controller
 
     public function show(Request $request)
     {
-        // $product = Product::findOrFail($request->id);
-
-        $products = DB::table('products')
-            ->join('categories', 'categories.id', '=', 'products.category')
-            ->select('products.*', 'categories.name')
-            ->where('category.id', '=', 'product.category')
-            ->get();
-
-            // dd($products);
-        return view('show', compact('products'));
-        // return view('show')->with('products', $products);
+        $product = Product::findOrFail($request->id);
+        return view('show')->with('product', $product);
     }
+
+
+//     public function show($id)
+//     {
+//         $products = DB::table('products')
+//         ->select('products.*', 'categories.categoryName')
+//         ->join('categories', 'categories.id', '=', 'products.category')
+//         ->where('products.id', $id)
+//         ->get();
+//  //dd($products);       
+
+//         return view('admin.show', compact('products'));
+//     }
 
     /**
      * Show the form for editing the specified resource.
