@@ -13,25 +13,53 @@ class TopController extends Controller
 {
     public function index()
     {
-        // $data=[
-        //   // 'products' => Product::all()//全データ取得
-        //   'products' => \App\Product::orderBy('created_at', 'desc')->paginate(8)//最新から8件取得
-        // ];
+
+        // 全件取得の場合
+        // $products = DB::table('products')
+        //     ->join('categories', 'categories.id', '=', 'products.category')
+        //     ->select('products.*', 'categories.name')
+        //     ->orderBy('products.created_at', 'desc')->paginate(8);
+        // dd($products);
 
 
-        
-        $products = DB::table('products')
-            ->join('categories', 'categories.id', '=', 'products.category')
-            ->select('products.*', 'categories.name')
-            ->orderBy('products.created_at', 'desc')->paginate(8);
+        // 1:食品  
+        $foods = DB::table('products')
+        ->join('categories', 'categories.id', '=', 'products.category')
+        ->select('products.*', 'categories.name')
+        ->where('categories.id', 1)
+        ->orderBy('products.created_at', 'desc')->paginate(8);
 
-          //  dd($products);
-         return view('top', compact('products'));
+        //2:生活       
+        $lives = DB::table('products')
+        ->join('categories', 'categories.id', '=', 'products.category')
+        ->select('products.*', 'categories.name')
+        ->where('categories.id', 2)
+        ->orderBy('products.created_at', 'desc')->paginate(8);
 
-        // $product = Product::all();   // 全データ取得
-        // return view('top', [
-        //     "products" => $product
-        // ]);
+         //3:ファッション 
+         $fashions = DB::table('products')
+         ->join('categories', 'categories.id', '=', 'products.category')
+         ->select('products.*', 'categories.name')
+         ->where('categories.id', 3)
+         ->orderBy('products.created_at', 'desc')->paginate(8);
+
+         //4:おもちゃ 
+         $toys = DB::table('products')
+         ->join('categories', 'categories.id', '=', 'products.category')
+         ->select('products.*', 'categories.name')
+         ->where('categories.id', 4)
+         ->orderBy('products.created_at', 'desc')->paginate(8);
+
+         //5:その他
+         $others = DB::table('products')
+         ->join('categories', 'categories.id', '=', 'products.category')
+         ->select('products.*', 'categories.name')
+         ->where('categories.id', 5)
+         ->orderBy('products.created_at', 'desc')->paginate(8);
+
+
+         return view('top', compact('foods','lives','fashions','toys','others'));
+
     }
 
 

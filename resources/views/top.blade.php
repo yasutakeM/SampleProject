@@ -75,25 +75,28 @@
 	<ul class="tab-group">
 		<li class="tab tab-A is-active">
             <div>
-                すべて
-                
+                食品                
             </div>
         </li>
 		<li class="tab tab-B">
             <div>
-            おもちゃ
+            生活
                 
         </div>
         </li>
 		<li class="tab tab-C">
             <div>
-            食品
-               
+            ファッション               
             </div>
         </li>
 		<li class="tab tab-D">
             <div>
-            ファッション
+            おもちゃ
+            </div>
+        </li>
+        <li class="tab tab-E">
+            <div>
+            その他
             </div>
         </li>
 	</ul>
@@ -101,89 +104,241 @@
     <div class="panel-group">
 		<div class="panel tab-A is-show">
 
+            <ul class="items">
+            @foreach($foods as $product)
+                    <li class="">
+                        
+                        <article class="itemFrame">
+                            <h3 class="itemInfo__name">{{ $product->productName }}</h3>
+                                <div class="itemImage">
+                                    <img class="" src="{{ asset('storage/products/') }}/{{ $product->productImage }}">
+                                </div>
 
-        
-
-    <ul class="items">
-    @foreach($products as $product)
-            <li class="">
-                
-                <article class="itemFrame">
-                    <h3 class="itemInfo__name">{{ $product->productName }}</h3>
-                        <div class="itemImage">
-                            <img class="" src="{{ asset('storage/products/') }}/{{ $product->productImage }}">
-                        </div>
-
-                    <div class="itemInfo">
-                        <div class="itemInfo__inner">
-                            
-                            <span>残数：{{$product->remaining}}</span>
-                            <div class="icon price">
-                                {{$product->amount}}<span>ゴールド</span>
-                            </div>
-
-                            <ul class="operation button--product">
-
-                                <li>
-                                    <a class="blue" href="{{ url('/') }}/show/{{ $product->id }}">詳細</a>
-                                </li>
-                                <li>
-                                <div>
-                                    <a class="orange" href="{{ url('/') }}/{{ $product->id }}/detail">購入</a>
+                            <div class="itemInfo">
+                                <div class="itemInfo__inner">
+                                    
+                                    <span>残数：{{$product->remaining}}</span>
+                                    <div class="icon price">
+                                        {{$product->amount}}<span>ゴールド</span>
                                     </div>
-                                </li>
-                            </ul>
+
+                                    <ul class="operation button--product">
+
+                                        <li>
+                                            <a class="blue" href="{{ url('/') }}/show/{{ $product->id }}">詳細</a>
+                                        </li>
+                                        <li>
+                                        <div>
+                                            <a class="orange" href="{{ url('/') }}/{{ $product->id }}/detail">購入</a>
+                                            </div>
+                                        </li>
+                                    </ul>
 
 
-                                @if($product->category == 1)
-                                    <div class="icon toy">
-                                        <a href="#">
-                                            {{ $product->name }}
-
-                                @elseif($product->category == 2)
                                     <div class="icon food">
                                         <a href="#">
                                             {{ $product->name }}
-
-                                @elseif($product->category == 3)
-                                    <div class="icon fashion">
-                                        <a href="#">
-                                            {{ $product->name }}
-
-                                @elseif($product->category == 4)
-                                    <div class="icon toy">
-                                        <a href="#">
-                                            {{ $product->name }}
-                                @else
-                                    <div class="icon uncategorize">
-                                        <a href="#">
-                                            未分類
-
-                                @endif
                                         </a>
                                     </div>
 
-                        </div><!--inner-->
-                    </div>
-                </article>
-            </li>
-    @endforeach            
-    </ul>
-
-    </div><!-- すべてパネル -->
-
-		<div class="panel tab-B">おもちゃ
+                                </div><!--inner-->
+                            </div>
+                        </article>
+                    </li>
+            @endforeach            
+            </ul>
 
 
+
+                {{ $foods->links() }}
+
+    </div><!-- end食品パネル -->
+
+	<div class="panel tab-B">
+        <ul class="items">
+        @foreach($lives as $product)
+                <li class="">
+                    
+                    <article class="itemFrame">
+                        <h3 class="itemInfo__name">{{ $product->productName }}</h3>
+                            <div class="itemImage">
+                                <img class="" src="{{ asset('storage/products/') }}/{{ $product->productImage }}">
+                            </div>
+
+                        <div class="itemInfo">
+                            <div class="itemInfo__inner">
+                                
+                                <span>残数：{{$product->remaining}}</span>
+                                <div class="icon price">
+                                    {{$product->amount}}<span>ゴールド</span>
+                                </div>
+
+                                <ul class="operation button--product">
+
+                                    <li>
+                                        <a class="blue" href="{{ url('/') }}/show/{{ $product->id }}">詳細</a>
+                                    </li>
+                                    <li>
+                                    <div>
+                                        <a class="orange" href="{{ url('/') }}/{{ $product->id }}/detail">購入</a>
+                                        </div>
+                                    </li>
+                                </ul>
+
+                                <div class="icon life">
+                                    <a href="#">
+                                        {{ $product->name }}
+                                    </a>
+                                </div>
+
+                            </div><!--inner-->
+                        </div>
+                    </article>
+                </li>
+        @endforeach            
+        </ul>
+    </div><!-- end生活パネル -->
+
+    <div class="panel tab-C">
 
     <ul class="items">
-<li>おもちゃ</li>  
-    </ul>
+        @foreach($fashions as $product)
+                <li class="">
+                    
+                    <article class="itemFrame">
+                        <h3 class="itemInfo__name">{{ $product->productName }}</h3>
+                            <div class="itemImage">
+                                <img class="" src="{{ asset('storage/products/') }}/{{ $product->productImage }}">
+                            </div>
 
-        </div>
-		<div class="panel tab-C">食品</div>
-        <div class="panel tab-D">ファッション</div>
+                        <div class="itemInfo">
+                            <div class="itemInfo__inner">
+                                
+                                <span>残数：{{$product->remaining}}</span>
+                                <div class="icon price">
+                                    {{$product->amount}}<span>ゴールド</span>
+                                </div>
+
+                                <ul class="operation button--product">
+
+                                    <li>
+                                        <a class="blue" href="{{ url('/') }}/show/{{ $product->id }}">詳細</a>
+                                    </li>
+                                    <li>
+                                    <div>
+                                        <a class="orange" href="{{ url('/') }}/{{ $product->id }}/detail">購入</a>
+                                        </div>
+                                    </li>
+                                </ul>
+
+                                <div class="icon fashion">
+                                    <a href="#">
+                                        {{ $product->name }}
+                                    </a>
+                                </div>
+
+                            </div><!--inner-->
+                        </div>
+                    </article>
+                </li>
+        @endforeach            
+        </ul>
+
+    </div><!--end fashion-->
+
+    <div class="panel tab-D">
+
+    <ul class="items">
+        @foreach($toys as $product)
+                <li class="">
+                    
+                    <article class="itemFrame">
+                        <h3 class="itemInfo__name">{{ $product->productName }}</h3>
+                            <div class="itemImage">
+                                <img class="" src="{{ asset('storage/products/') }}/{{ $product->productImage }}">
+                            </div>
+
+                        <div class="itemInfo">
+                            <div class="itemInfo__inner">
+                                
+                                <span>残数：{{$product->remaining}}</span>
+                                <div class="icon price">
+                                    {{$product->amount}}<span>ゴールド</span>
+                                </div>
+
+                                <ul class="operation button--product">
+
+                                    <li>
+                                        <a class="blue" href="{{ url('/') }}/show/{{ $product->id }}">詳細</a>
+                                    </li>
+                                    <li>
+                                    <div>
+                                        <a class="orange" href="{{ url('/') }}/{{ $product->id }}/detail">購入</a>
+                                        </div>
+                                    </li>
+                                </ul>
+
+                                <div class="icon toy">
+                                    <a href="#">
+                                        {{ $product->name }}
+                                    </a>
+                                </div>
+
+                            </div><!--inner-->
+                        </div>
+                    </article>
+                </li>
+        @endforeach            
+        </ul>    
+
+    </div><!--end toy-->
         
+
+    <div class="panel tab-E">
+    <ul class="items">
+        @foreach($others as $product)
+                <li class="">
+                    
+                    <article class="itemFrame">
+                        <h3 class="itemInfo__name">{{ $product->productName }}</h3>
+                            <div class="itemImage">
+                                <img class="" src="{{ asset('storage/products/') }}/{{ $product->productImage }}">
+                            </div>
+
+                        <div class="itemInfo">
+                            <div class="itemInfo__inner">
+                                
+                                <span>残数：{{$product->remaining}}</span>
+                                <div class="icon price">
+                                    {{$product->amount}}<span>ゴールド</span>
+                                </div>
+
+                                <ul class="operation button--product">
+
+                                    <li>
+                                        <a class="blue" href="{{ url('/') }}/show/{{ $product->id }}">詳細</a>
+                                    </li>
+                                    <li>
+                                    <div>
+                                        <a class="orange" href="{{ url('/') }}/{{ $product->id }}/detail">購入</a>
+                                        </div>
+                                    </li>
+                                </ul>
+
+                                <div class="icon other">
+                                    <a href="#">
+                                        {{ $product->name }}
+                                    </a>
+                                </div>
+
+                            </div><!--inner-->
+                        </div>
+                    </article>
+                </li>
+        @endforeach            
+        </ul>    
+
+    </div><!--end その他-->
 
 
 	</div>
@@ -251,6 +406,3 @@
 @endsection
 
 
-@section('pagenation')
-    {{ $products->links() }}
-@endsection

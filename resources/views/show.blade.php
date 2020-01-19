@@ -143,12 +143,8 @@ footer{
 
 
     <div class="iconDetail price">
-                                {{$product->amount}}<span>ゴールド</span>
-                            </div>
-
-
-
-            
+        {{$product->amount}}<span>ゴールド</span>
+    </div>
 
             @if($product->category =="おもちゃ")
                 <div class="icon toy">
@@ -174,7 +170,6 @@ footer{
                 </div>
 
 
-
 </div><!-- info -->
 
 
@@ -182,17 +177,14 @@ footer{
 
 
 <ul class="operation button--product">
-<li>
+    <li>
+        <a class="blue" href="{{ url('/') }}">戻る</a>
+    </li>
+    <li>
+        <a class="orange" href="{{ url('/') }}/{{ $product->id }}/detail">購入</a>
+    </li>
 
-                        <a class="blue" href="{{ url('/') }}">戻る</a>
-                    </li>
-                    <li>
-                    <div>
-                        <a class="orange" href="{{ url('/') }}/{{ $product->id }}/detail">購入</a>
-                        </div>
-                    </li>
-
-                </ul>
+</ul>
 
 </section>
 
