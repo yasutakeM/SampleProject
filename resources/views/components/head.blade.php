@@ -17,4 +17,6 @@
 <meta name="keywords" itemprop="keywords" content="@yield('keywords')">
 @yield('script')
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 @endsection

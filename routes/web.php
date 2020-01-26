@@ -37,6 +37,9 @@ Route::get('/regist', function () {
     return view('entry/regist');
 });
 
+//STRIPE決済ボタン押した時
+Route::post('/pay', 'PaymentController@pay');
+
 //管理者
 Route::resource('admin', 'ProductController');
 
@@ -80,28 +83,30 @@ Auth::routes();
 Route::group(['middleware' => 'auth:user'], function() {
     Route::get('/admin', 'ProductController@index')->name('admin.index');
 });
- 
+
 /*
 |--------------------------------------------------------------------------
 | 3) Admin 認証不要
 |--------------------------------------------------------------------------
 */
-// Route::group(['prefix' => 'admin'], function() {
-//     Route::get('/',         function () { return redirect('/admin'); });
-//     Route::get('login',     'admin\auth\logincontroller@showloginform')->name('admin.login');
-//     Route::get('register',  'admin\auth\registercontroller@showloginform')->name('admin.register');
-//     Route::post('register', 'admin\auth\registercontroller@register')->name('admin.register');
-//     Route::post('login',    'Admin\Auth\LoginController@login');
-// });
+Route::group(['prefix' => 'admin'], function() {
+    // Route::get('/',         function () { return redirect('/admin'); });
+    Route::get('login',     'Admin\Auth\logincontroller@showloginform')->name('admin.login');
+    Route::get('register',  'Admin\Auth\registercontroller@showloginform')->name('admin.register');
+    Route::post('register', 'Admin\Auth\registercontroller@register')->name('admin.register');
+    Route::post('login',    'Admin\Auth\LoginController@login');
+});
 
 // /*
 // |--------------------------------------------------------------------------
 // | 4) Admin ログイン後
 // |--------------------------------------------------------------------------
 // */
-// Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function() {
-//     Route::post('logout',   'admin\auth\logincontroller@logout')->name('admin.logout');
-//     Route::get('admin',      'admin\Productcontroller@index')->name('admin.index');
-// });
+Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function() {
+    Route::post('logout',   'Admin\Auth\logincontroller@logout')->name('admin.logout');
+    Route::get('admin',      'admin\logincontroller@index')->name('admin');
+});
+
+
 
 

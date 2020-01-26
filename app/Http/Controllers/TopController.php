@@ -9,9 +9,11 @@ use Illuminate\Http\Request;
 
 
 
+
+
 class TopController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
 
         // 全件取得の場合
@@ -21,15 +23,28 @@ class TopController extends Controller
         //     ->orderBy('products.created_at', 'desc')->paginate(8);
         // dd($products);
 
+        $page = $request->input('page');
+        $tabNo = $request->tabNo;
+
+      //  dd($tabNo);
+
+        // if($page < 1 && $page === null){
+        //   $page = 1;
+        // }elseif($page >1){
+        //   $page = $page * 8 + 1;
+        // }
+
+        // dd($page);
 
         // 1:食品  
         $foods = DB::table('products')
         ->join('categories', 'categories.id', '=', 'products.category')
         ->select('products.*', 'categories.name')
         ->where('categories.id', 1)
+        ->offset($page)
         ->orderBy('products.created_at', 'desc')->paginate(8);
 
-        //2:生活       
+        //2:生活 
         $lives = DB::table('products')
         ->join('categories', 'categories.id', '=', 'products.category')
         ->select('products.*', 'categories.name')

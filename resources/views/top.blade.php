@@ -9,8 +9,14 @@
 @endsection
 
 @include('components.head')
- 
+
+
 @section('topArea')
+<style>
+.pagination{
+    background: #333;
+}
+</style>
 
 
 <div class="container">
@@ -44,16 +50,6 @@
 @section('content')
 
 
-
-        カテゴリで絞る
-        <select>    
-            <option>選択する</option>
-            <option>グルメ</option>
-            <option>休暇</option>
-            <option>健康</option>
-        </select>
-        <br><br><br>
-
     <?php
         // <h3 class="itemInfo__name title_box">
         //     @guest
@@ -70,6 +66,21 @@
 <div class="testwrap">
 
 
+<script type="text/javascript">
+$(function($){
+    //クリックしたときの関数
+    $('.tab').click(function(){
+        // 〜〜コンテンツについての処理〜〜
+        //クリックされたタブの番号をindexに格納。
+        const index = $(this).index();
+        $('input:hidden[name="tabNo"]').val(index);
+
+        //alert($('input:hidden[name="tabNo"]').val(index));
+
+    });
+});
+</script>
+
 <div class="tab-panel">
 	<!--タブ-->
 	<ul class="tab-group">
@@ -80,27 +91,28 @@
         </li>
 		<li class="tab tab-B">
             <div>
-            生活
-                
-        </div>
+                生活  
+            </div>
         </li>
 		<li class="tab tab-C">
             <div>
-            ファッション               
+                ファッション               
             </div>
         </li>
 		<li class="tab tab-D">
             <div>
-            おもちゃ
+                おもちゃ
             </div>
         </li>
         <li class="tab tab-E">
             <div>
-            その他
+                その他
             </div>
         </li>
 	</ul>
-    
+
+    <input type="hidden" name="tabNo" value="">
+
     <div class="panel-group">
 		<div class="panel tab-A is-show">
 
@@ -111,7 +123,9 @@
                         <article class="itemFrame">
                             <h3 class="itemInfo__name">{{ $product->productName }}</h3>
                                 <div class="itemImage">
-                                    <img class="" src="{{ asset('storage/products/') }}/{{ $product->productImage }}">
+                                <?php
+                                //<img class="" src="{{ asset('storage/products/') }}/{{ $product->productImage }}">
+                                ?>
                                 </div>
 
                             <div class="itemInfo">
@@ -130,10 +144,31 @@
                                         <li>
                                         <div>
                                             <a class="orange" href="{{ url('/') }}/{{ $product->id }}/detail">購入</a>
+
+
+                                            <?php
+                                            //元々157行目にあった
+                                            //data-key="{{ env('STRIPE_KEY') }}"
+                                            ?>
+                                            <form action="{{ asset('pay') }}" method="POST">
+                                                {{ csrf_field() }}
+                                            <script
+                                                src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                                data-key="pk_test_rpO1vmdYNmhgLs9wsXCzHUpg00uuBcThXP"
+                                                data-amount="100"
+                                                data-name="Stripe決済デモ"
+                                                data-label="決済をする"
+                                                data-description="これはデモ決済です"
+
+                                                data-locale="auto"
+                                                data-currency="JPY">
+                                                
+                                            </script>
+                                            </form>
+
                                             </div>
                                         </li>
                                     </ul>
-
 
                                     <div class="icon food">
                                         <a href="#">
@@ -149,8 +184,10 @@
             </ul>
 
 
+             
 
-                {{ $foods->links() }}
+<a href="#">もっと見る</a>
+
 
     </div><!-- end食品パネル -->
 
@@ -162,7 +199,9 @@
                     <article class="itemFrame">
                         <h3 class="itemInfo__name">{{ $product->productName }}</h3>
                             <div class="itemImage">
-                                <img class="" src="{{ asset('storage/products/') }}/{{ $product->productImage }}">
+                            <?php
+                                //<img class="" src="{{ asset('storage/products/') }}/{{ $product->productImage }}">
+                                ?>
                             </div>
 
                         <div class="itemInfo">
@@ -197,145 +236,27 @@
                 </li>
         @endforeach            
         </ul>
+
+        {{ $lives->links() }}
     </div><!-- end生活パネル -->
 
     <div class="panel tab-C">
 
-    <ul class="items">
-        @foreach($fashions as $product)
-                <li class="">
-                    
-                    <article class="itemFrame">
-                        <h3 class="itemInfo__name">{{ $product->productName }}</h3>
-                            <div class="itemImage">
-                                <img class="" src="{{ asset('storage/products/') }}/{{ $product->productImage }}">
-                            </div>
-
-                        <div class="itemInfo">
-                            <div class="itemInfo__inner">
-                                
-                                <span>残数：{{$product->remaining}}</span>
-                                <div class="icon price">
-                                    {{$product->amount}}<span>ゴールド</span>
-                                </div>
-
-                                <ul class="operation button--product">
-
-                                    <li>
-                                        <a class="blue" href="{{ url('/') }}/show/{{ $product->id }}">詳細</a>
-                                    </li>
-                                    <li>
-                                    <div>
-                                        <a class="orange" href="{{ url('/') }}/{{ $product->id }}/detail">購入</a>
-                                        </div>
-                                    </li>
-                                </ul>
-
-                                <div class="icon fashion">
-                                    <a href="#">
-                                        {{ $product->name }}
-                                    </a>
-                                </div>
-
-                            </div><!--inner-->
-                        </div>
-                    </article>
-                </li>
-        @endforeach            
+    <ul class="items">        
         </ul>
 
     </div><!--end fashion-->
 
     <div class="panel tab-D">
 
-    <ul class="items">
-        @foreach($toys as $product)
-                <li class="">
-                    
-                    <article class="itemFrame">
-                        <h3 class="itemInfo__name">{{ $product->productName }}</h3>
-                            <div class="itemImage">
-                                <img class="" src="{{ asset('storage/products/') }}/{{ $product->productImage }}">
-                            </div>
-
-                        <div class="itemInfo">
-                            <div class="itemInfo__inner">
-                                
-                                <span>残数：{{$product->remaining}}</span>
-                                <div class="icon price">
-                                    {{$product->amount}}<span>ゴールド</span>
-                                </div>
-
-                                <ul class="operation button--product">
-
-                                    <li>
-                                        <a class="blue" href="{{ url('/') }}/show/{{ $product->id }}">詳細</a>
-                                    </li>
-                                    <li>
-                                    <div>
-                                        <a class="orange" href="{{ url('/') }}/{{ $product->id }}/detail">購入</a>
-                                        </div>
-                                    </li>
-                                </ul>
-
-                                <div class="icon toy">
-                                    <a href="#">
-                                        {{ $product->name }}
-                                    </a>
-                                </div>
-
-                            </div><!--inner-->
-                        </div>
-                    </article>
-                </li>
-        @endforeach            
+    <ul class="items">      
         </ul>    
 
     </div><!--end toy-->
         
 
     <div class="panel tab-E">
-    <ul class="items">
-        @foreach($others as $product)
-                <li class="">
-                    
-                    <article class="itemFrame">
-                        <h3 class="itemInfo__name">{{ $product->productName }}</h3>
-                            <div class="itemImage">
-                                <img class="" src="{{ asset('storage/products/') }}/{{ $product->productImage }}">
-                            </div>
-
-                        <div class="itemInfo">
-                            <div class="itemInfo__inner">
-                                
-                                <span>残数：{{$product->remaining}}</span>
-                                <div class="icon price">
-                                    {{$product->amount}}<span>ゴールド</span>
-                                </div>
-
-                                <ul class="operation button--product">
-
-                                    <li>
-                                        <a class="blue" href="{{ url('/') }}/show/{{ $product->id }}">詳細</a>
-                                    </li>
-                                    <li>
-                                    <div>
-                                        <a class="orange" href="{{ url('/') }}/{{ $product->id }}/detail">購入</a>
-                                        </div>
-                                    </li>
-                                </ul>
-
-                                <div class="icon other">
-                                    <a href="#">
-                                        {{ $product->name }}
-                                    </a>
-                                </div>
-
-                            </div><!--inner-->
-                        </div>
-                    </article>
-                </li>
-        @endforeach            
+    <ul class="items">         
         </ul>    
 
     </div><!--end その他-->
@@ -403,6 +324,13 @@
     
     </div><!-- //.content -->
 </div><!-- .container -->
+
+
+
+
+
+
+
 @endsection
 
 
