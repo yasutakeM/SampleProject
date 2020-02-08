@@ -296,7 +296,9 @@ background: linear-gradient(transparent 50%, #fff965b0 50%);
 }
 		@media screen and (min-width: 769px) {
 			.contentsArea{
+				width: 100%;
 				max-width: 980px;
+				min-height: 640px;
 				margin: 5vh auto 0;
 			}
 		}
@@ -310,10 +312,7 @@ background: linear-gradient(transparent 50%, #fff965b0 50%);
 			}
 
 		}
-		.sidebar{
-			display: none;
-		}
-		
+
 		@media screen and (min-width: 980px) {
 			.contentsArea__contents > li {
 				float: left;
@@ -328,8 +327,22 @@ background: linear-gradient(transparent 50%, #fff965b0 50%);
 			.contentsArea{
 				margin: 0 20px 0 0;
 			}
+
 			.sidebar{
-				display: block;
+				margin: 18px 6px 0 50px;
+				padding: 1em;
+				background-size: 20px 20px;
+				border-radius: 5px;
+				background-color: #2e2c27;
+				background-image: linear-gradient(45deg,rgba(255,255,255,.05) 25%,transparent 25%,transparent 50%,rgba(51, 40, 40,.05) 50%,rgba(255,255,255,.05) 75%,transparent 75%,transparent),linear-gradient(-45deg,rgba(255,255,255,.05) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.05) 50%,rgba(255,255,255,.05) 75%,transparent 75%,transparent);
+			}
+			.sidebar h3{
+				background: #262420;
+				padding: 8px;
+				border-radius: 2px;
+				color: #d0d0d0;
+				text-align: center;
+				font-size:1.6rem;
 			}
 			.sidebar a.banner{
 				display: block;
@@ -563,13 +576,13 @@ border-bottom: 1px solid #ccc;
     margin-right: 12px;
 }
 .memberLink--side{
-	background: #fff;
+	background: #bfaa87;
     padding: 30px 20px 20px;
     box-sizing: border-box;
     text-align: center;
-    margin-bottom: 24px;
     position: relative;
-	overflow: hidden;
+    box-shadow: inset 0px 0px 16px 6px #614a2c;
+    border-radius: 4px;
 }
 .memberLink--side a{
 	margin-bottom: 20px;
@@ -586,18 +599,50 @@ border-bottom: 1px solid #ccc;
 .memberLink--side p{
 	margin-bottom: 8px;
 }
-.memberLink--side:before{
-	content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 6px;
-	background:#a2a2a2;
+
+.memberLink--flame{
+	padding: 4px;
+    border-radius: 8px;
+    background: #4a3d2b;
+    box-shadow: inset 0px 0px 4px 0px #7d776a;
+    margin-bottom: 24px;
 }
+.memberLink--title{
+    background: #710509;
+    color: #d4b2b1;
+    display: inline-block;
+    position: absolute;
+    padding: 4px 17px;
+    left: -10px;
+    top: -12px;
+}
+  
+  .memberLink--title:before {
+	position: absolute;
+    content: '';
+    top: 100%;
+    left: 0;
+    border: none;
+    border-bottom: solid 8px transparent;
+    border-right: solid 10px rgb(53, 6, 7);
+  }
+
 .publicWrap{
-background: #f6f6f6;
-	padding: 16px;
+    background: #383630;
+    color: #ded3cb;
+    padding: 16px;
+    position: relative;
+}
+.publicWrap dl{
+    font-size: 1.4rem;
+}
+.publicWrap dt{
+	background: #27251c;
+	padding: 4px;
+	margin-bottom: 4px;
+}
+.publicWrap dd{
+	margin-bottom: 16px;
 }
 .publicInfomation{
 	font-size: 20px;
@@ -760,21 +805,6 @@ label + input,label + textarea,label + select{
 	}
 }
 
-.operation{
-	width: 100%;
-	display: flex;
-	margin-top: 6px;
-}
-.operation li{
-    width: -webkit-calc(50% - 6px);
-    width: calc(50% - 6px);
-}
-.operation li:first-child{
-	margin-right: 12px;
-}
-.operation li input{
-	display: block;
-}
 
 .toTop{
 	width: 120px;
@@ -1088,7 +1118,21 @@ color: #777;
     box-shadow: none;
 }
 
-
+.operation{
+	width: 100%;
+	display: flex;
+	margin-top: 6px;
+}
+.operation li{
+    width: -webkit-calc(50% - 6px);
+    width: calc(50% - 6px);
+}
+.operation li:first-child{
+	margin-right: 12px;
+}
+.operation li input{
+	display: block;
+}
 
 /* icon */
 @font-face {
@@ -1369,7 +1413,7 @@ background: linear-gradient(to bottom, rgb(255, 176, 30) 0%,rgb(78, 53, 6) 100%)
 
 .content__header {
     width: 960px;
-    margin: 0 auto;
+    margin: 97px auto 0;
     position: relative;
 }
 .content__header__logo {
@@ -1427,7 +1471,7 @@ width: 100%;
 	box-shadow: inset 0px -6px 4px rgba(0,0,0,.4);
 	margin-top:-2px;
 	padding: 24px 12px 12px 12px;
-
+	min-height: 480px;
 }
 
 .panel-group:before,.panel-group:after{

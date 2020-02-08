@@ -18,6 +18,14 @@
 }
 </style>
 
+@section('aside')
+    @include('components.aside')
+@endsection
+
+
+@section('header')
+    @include('components.header')
+@endsection
 
 <div class="container">
     <div class="content">
@@ -38,17 +46,8 @@
         </div>
 @endsection
 
-@section('catch')
-<div class="caption"  name="viewArea" id="viewArea">
-    <h2>
-    警備員がご機嫌になるアイテム盛り沢山！<span>架空のゲーム内ショップでございます</span>
-    </h2>
-    <p>警備員のご機嫌を取ることが家内安全への近道となります。<br><span style="color: #ef6464;">＊実際に商品を購入することは出来ませんのでご注意ください。</spa></p>
-</div>
-@endsection
 
 @section('content')
-
 
     <?php
         // <h3 class="itemInfo__name title_box">
@@ -126,6 +125,7 @@ $(function($){
                                 <?php
                                 //<img class="" src="{{ asset('storage/products/') }}/{{ $product->productImage }}">
                                 ?>
+                                <img class="" src="{{ asset('storage/products/') }}/item02.jpg">
                                 </div>
 
                             <div class="itemInfo">
@@ -137,9 +137,8 @@ $(function($){
                                     </div>
 
                                     <ul class="operation button--product">
-
                                         <li>
-                                            <a class="blue" href="{{ url('/') }}/show/{{ $product->id }}">詳細</a>
+                                            <a class="blue" href="{{ url('/') }}/cart/{{ $product->id }}">詳細</a>
                                         </li>
                                         <li>
                                         <div>
@@ -166,6 +165,28 @@ $(function($){
                                             </script>
                                             </form>
 
+                                <form action="{{ asset('pay') }}" method="POST">
+                                    {!! csrf_field() !!}
+                                    <script
+                                        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                        data-key="pk_test_rpO1vmdYNmhgLs9wsXCzHUpg00uuBcThXP"
+                                        data-amount="555"
+                                        data-name="Stripe決済デモ"
+                                        data-label="決済をする"
+                                        data-description="これはデモ決済です"
+                                        data-email="ymakita515@gmail.com"
+                                        data-description="description"
+                                        data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                                        data-locale="auto"
+                                        data-currency="jpy"
+                                        $.ajaxSetup({
+                                            headers: {
+                                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                            }
+                                        })
+                                    >
+                                    </script>
+                                </form>
                                             </div>
                                         </li>
                                     </ul>
@@ -268,54 +289,7 @@ $(function($){
 
 
 
-        <aside class="sidebar">
-        <div class="memberLink--side">
-
-        @if (Route::has('login'))
-                    @auth
-                    <a class="dropdown-item button--white" href="#">
-                        {{ __('カートを見る') }}
-                    </a>
-                    <div class="publicWrap">
-                    カート内商品
-                    <div class="publicInfomation">
-                        <span>9999円</span>
-                    </div>
-                    <a href="#" class="button--orange">レジへ</a>
-                    </div>
-                    
-                    @else
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="button--orange">会員登録</a>
-                        @endif
-                        <p>会員登録済みの方はこちら</p>
-                        <a href="{{ route('login') }}" class="button--white">ログイン</a>
-                    @endauth
-        @endif
-        </div>
-
-
-            
-
-            <h3>イベント情報</h3> 
-            <a href="http://localhost:8888/guardiancat/" class="banner">
-            <img src="{{ asset('storage/banner/event01.png') }}" alt="警備員をお探しの方はこちらから">
-            </a>
-
-            <h3>優秀な警備員をお探しの方はこちら</h3> 
-
-            <a href="http://localhost:8888/guardiancat/" class="banner">
-            <img src="{{ asset('storage/banner/04.gif') }}" alt="警備員をお探しの方はこちらから">
-            </a>
-
-            <a href="http://localhost:8888/guardiancat/" class="banner">
-            <img src="{{ asset('storage/banner/06.jpg') }}" alt="警備員をお探しの方はこちらから">
-            </a>
-
-            <a href="http://localhost:8888/guardiancat/" class="banner">
-            <img src="{{ asset('storage/banner/07.jpg') }}" alt="警備員をお探しの方はこちらから">
-            </a>
-        </aside>
+        
 
 
 </div>

@@ -7,7 +7,10 @@
 @yield('header')
 
 @yield('topArea')
+
 <div class="contentsWrap">
+    @yield('aside')
+
     <div class="contentsArea">
 
         @yield('catch')
@@ -16,7 +19,7 @@
 
         @yield('pagenation')
     </div>  
-    @yield('aside')
+
 </div>
 
     @include('components.footer')

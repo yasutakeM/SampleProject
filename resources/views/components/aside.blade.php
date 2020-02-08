@@ -1,50 +1,41 @@
-@section('aside')
 <aside class="sidebar">
-  <div class="memberLink--side">
 
-  @if (Route::has('login'))
-            @auth
-            <a class="dropdown-item button--white" href="#">
-                {{ __('カートを見る') }}
+        @if (Route::has('login'))
+        @auth
+        <div class="memberLink--flame">
+                <div class="memberLink--side">
+
+                  <div class="publicWrap">
+                      <div class="memberLink--title">カート内情報</div>
+
+                      <dl>
+                        <dt>アイテム数</dt>
+                        <dd>３件</dd>
+
+                        <dt>合計</dt>
+                        <dd>3333ゴールド</dd>
+                      </dl>
+                  </div>
+
+                  <a href="#">レジへ</a>
+                </div>
+        </div>
+        @endauth
+        @endif
+
+<div>
+            <h3>イベント情報</h3> 
+            <a href="http://localhost:8888/guardiancat/" class="banner">
+            <img src="{{ asset('storage/banner/event01.png') }}" alt="警備員をお探しの方はこちらから">
             </a>
-            <div class="publicWrap">
-              カート内商品
-              <div class="publicInfomation">
-                  <span>9999円</span>
-              </div>
-              <a href="#" class="button--orange">レジへ</a>
-            </div>
-            
-            @else
-                @if (Route::has('register'))
-                    <a href="{{ route('register') }}" class="button--orange">会員登録</a>
-                @endif
-                  <p>会員登録済みの方はこちら</p>
-                  <a href="{{ route('login') }}" class="button--white">ログイン</a>
-            @endauth
-  @endif
-  </div>
+</div>
 
-  <ul class="categories">
-    @foreach($products as $product->category)
-        <li class="category">
-            <a class="category-link" href="#">カテゴリ01</a>
-        </li>
-    @endforeach
-    </ul>
-    
- <h3>優秀な警備員をお探しの方はこちら</h3> 
-     <a href="http://localhost:8888/guardiancat/" class="banner">
-      <img src="{{ asset('storage/banner/04.gif') }}" alt="警備員をお探しの方はこちらから">
-    </a>
+<div>
+            <h3>警備員をお探しの方</h3> 
 
-    <a href="http://localhost:8888/guardiancat/" class="banner">
-      <img src="{{ asset('storage/banner/06.jpg') }}" alt="警備員をお探しの方はこちらから">
-    </a>
+            <a href="http://localhost:8888/guardiancat/" class="banner">
+            <img src="{{ asset('storage/banner/04.gif') }}" alt="警備員をお探しの方はこちらから">
+            </a>
+</div>
 
-    <a href="http://localhost:8888/guardiancat/" class="banner">
-      <img src="{{ asset('storage/banner/07.jpg') }}" alt="警備員をお探しの方はこちらから">
-    </a>
-  
-  </aside>
-@endsection
+</aside>

@@ -181,8 +181,20 @@ footer{
         <a class="blue" href="{{ url('/') }}">戻る</a>
     </li>
     <li>
-        <a class="orange" href="{{ url('/') }}/{{ $product->id }}/detail">購入</a>
+
+
+
+    <form action="{{ url('/cart') }}" method="post">
+    {{ csrf_field() }}
+        <input type="hidden" name="user_id" value="{{$product->id}}">
+        <input type="hidden" name="productName" value="{{$product->productName}}">
+        <input type="hidden" name="category" value="{{$product->category}}">
+        <input type="hidden" name="amount" value="{{$product->amount}}">
+
+        <input type="submit" value="カートにいれる" class="orange">
+    </form>
     </li>
+
 
 </ul>
 

@@ -25,7 +25,10 @@ Route::get('/hello/view', 'TopController@view');
 //TOP > 商品詳細ボタン押した時
 Route::get('show/{id}', 'ProductController@show');
 
-
+//CRT
+Route::get('cart/{id}', 'CartController@index');
+Route::post('/store/{id}', 'CartController@store')->name('store');;
+Route::resource('cart', 'CartController');
 
 //会員ログイン
 Route::get('/login', function () {
@@ -91,9 +94,9 @@ Route::group(['middleware' => 'auth:user'], function() {
 */
 Route::group(['prefix' => 'admin'], function() {
     // Route::get('/',         function () { return redirect('/admin'); });
-    Route::get('login',     'Admin\Auth\logincontroller@showloginform')->name('admin.login');
-    Route::get('register',  'Admin\Auth\registercontroller@showloginform')->name('admin.register');
-    Route::post('register', 'Admin\Auth\registercontroller@register')->name('admin.register');
+    Route::get('login',     'Admin\Auth\LoginController@showLoginForm')->name('admin.login');
+    Route::get('register',  'Admin\Auth\RegisterController@showLoginForm')->name('admin.register');
+    Route::post('register', 'Admin\Auth\RegisterController@register')->name('admin.register');
     Route::post('login',    'Admin\Auth\LoginController@login');
 });
 
@@ -103,8 +106,8 @@ Route::group(['prefix' => 'admin'], function() {
 // |--------------------------------------------------------------------------
 // */
 Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function() {
-    Route::post('logout',   'Admin\Auth\logincontroller@logout')->name('admin.logout');
-    Route::get('admin',      'admin\logincontroller@index')->name('admin');
+    Route::post('logout',   'Admin\Auth\LoginController@logout')->name('admin.logout');
+    Route::get('admin',      'Admin\LoginController@index')->name('admin');
 });
 
 
