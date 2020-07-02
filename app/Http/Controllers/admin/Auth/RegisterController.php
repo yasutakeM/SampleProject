@@ -74,4 +74,9 @@ class RegisterController extends Controller
     {
         return view('admin.register');
     }
+
+    public function showRegisterForm()
+    {
+        return view('admin.register');  // 管理者用テンプレート
+    }
 }

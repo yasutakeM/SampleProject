@@ -39,13 +39,18 @@ class CartController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,$id)
-    {
-        //
 
-        dd('カートテスト');
+ //    public function store(Request $request,$id)
+    public function store(Request $request)
+    {
+        $product = new Product();
+        // dd('カートテスト');
         $product->fill($request->all())->save();
-        $product = Product::findOrFail($id);
+        // dd('カートテスト');
+        $product = Product::findOrFail($request->id);
+       // dd('カートテスト');
+//        $product = Product::findOrFail($id);
+        
         return view('/')->with('product', $product,$userId);        
     }
 

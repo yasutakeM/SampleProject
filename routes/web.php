@@ -44,7 +44,9 @@ Route::get('/regist', function () {
 Route::post('/pay', 'PaymentController@pay');
 
 //管理者
-Route::resource('admin', 'ProductController');
+// Route::resource('admin', 'ProductController');
+Route::get('admin/create', 'ProductController@create');
+Route::post('admin', 'ProductController@store'); 
 
 //商品登録後　登録内容表示
 Route::get('detail/{id}', 'ProductController@detail')->name('detail');
@@ -74,7 +76,7 @@ Auth::routes();
 // Route::resource('/', 'HomeController');
 
 //Route::get('/', function () { return redirect('/home'); });
- 
+
 /*
 |--------------------------------------------------------------------------
 | 2) User ログイン後
@@ -95,6 +97,7 @@ Route::group(['middleware' => 'auth:user'], function() {
 Route::group(['prefix' => 'admin'], function() {
     // Route::get('/',         function () { return redirect('/admin'); });
     Route::get('login',     'Admin\Auth\LoginController@showLoginForm')->name('admin.login');
+    // Route::get('register',  'Admin\Auth\RegisterController@showLoginForm')->name('admin.register');
     Route::get('register',  'Admin\Auth\RegisterController@showLoginForm')->name('admin.register');
     Route::post('register', 'Admin\Auth\RegisterController@register')->name('admin.register');
     Route::post('login',    'Admin\Auth\LoginController@login');

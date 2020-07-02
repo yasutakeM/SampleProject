@@ -234,7 +234,6 @@ $(function($){
                                 </div>
 
                                 <ul class="operation button--product">
-
                                     <li>
                                         <a class="blue" href="{{ url('/') }}/show/{{ $product->id }}">詳細</a>
                                     </li>

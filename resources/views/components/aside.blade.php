@@ -22,7 +22,7 @@
         </div>
         @endauth
         @endif
-
+        
 <div>
             <h3>イベント情報</h3> 
             <a href="http://localhost:8888/guardiancat/" class="banner">
